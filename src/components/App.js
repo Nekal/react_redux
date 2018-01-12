@@ -4,6 +4,8 @@ import Header from './Header'
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import Route from "react-router-dom/es/Route";
 import AddNews from "../conteiners/AddNews";
+import NewsList from "./NewsList";
+import NewsDetail from "./NewsDetail";
 
 
 const App = () => (
@@ -12,8 +14,9 @@ const App = () => (
             <div style={{height:936}}>
             <Header />
             <Switch>
-                <Route exact path="/" component={AddNews} />
-                {/*<Route path="/add" component={AddTodo} />*/}
+                <Route exact path="/" component={NewsList} />
+                <Route path="/add" component={AddNews} />
+                <Route path="/:id" component={NewsDetail}/>
                 {/*<Route path="/edit/:id" component={EditTodo} />*/}
                 {/*<Route path="/:id" component={TodoDetail} />*/}
             </Switch>

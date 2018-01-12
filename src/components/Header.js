@@ -11,14 +11,14 @@ let Header = () => {
                     <Row>
                         <Col>
                             <h1>Welcome to React</h1>
-                            <p>
+                            {/*<p>*/}
                                 <div>
                                     <form>
                                         <a href="/" className="btn btn-primary btn-large">All news</a>
                                         <p><a href="/add" className="btn btn-primary btn-large">Create post</a></p>
                                     </form>
                                 </div>
-                            </p>
+                            {/*</p>*/}
                         </Col>
                     </Row>
                 </Container>
