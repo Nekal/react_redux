@@ -1,5 +1,6 @@
 import React from 'react'
 import News from './News'
+import '../styles/newsList.css'
 
 let newsList = []
 for(let i = 0; i < window.localStorage.length; i++) {
@@ -8,7 +9,7 @@ for(let i = 0; i < window.localStorage.length; i++) {
 }
 
 const NewsList = () => (
-    <div>
+    <div className="list">
         <ul>
             {newsList.map(news =>
                 <News key={news.id} id={news.id} title={news.title} content={news.content}/>

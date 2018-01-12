@@ -4,3 +4,8 @@ export const addNewsAction = (title, content) => ({
     title,
     content
 })
+
+export const deleteNewsAction = (id) => ({
+    type: 'DELETE_TODO',
+    id
+})

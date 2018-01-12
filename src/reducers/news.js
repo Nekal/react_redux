@@ -10,6 +10,14 @@ const news = (state = [], action) => {
                     content: action.content,
                 }
             ]
+        case 'DELETE_TODO':
+            window.localStorage.removeItem(action.id)
+            return [
+                ...state,
+                {
+                    id: action.id
+                }
+            ]
         default:
             return state
     }

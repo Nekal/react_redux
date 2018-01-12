@@ -4,18 +4,17 @@ import React from "react";
 import PropTypes from 'prop-types'
 import {addNewsAction} from "../actions";
 
-let AddNews = (addNewsClick) => (
+let AddNewsContainer = (addNewsClick) => (
     <AddNewsComponent addNewsClick={addNewsClick}/>
 )
 
-let AddNewsItem = (dispatch) => {
+let AddNews = (dispatch) => {
     return ({
         addNewsClick: (title, content) => {
             if (title !== "" && content !== "") {
-                console.log(title, content)
-                dispatch(addNewsAction(title, content))
+                let id = dispatch(addNewsAction(title, content)).id
+                window.location.href = "/" + id
             }
-            // window.location.href = "/"
         }
     })
 }
@@ -24,6 +23,6 @@ AddNews.propTypes = {
     addNewsClick: PropTypes.func.isRequired,
 }
 
-AddNews = connect(null, AddNewsItem)(AddNews)
+AddNewsContainer = connect(null, AddNews)(AddNewsContainer)
 
-export default AddNews
+export default AddNewsContainer
