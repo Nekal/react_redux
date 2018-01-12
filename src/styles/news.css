@@ -1,4 +1,15 @@
 .content {
     max-height: 100px;
     overflow-x:hidden;
+
+}
+
+.animated {
+    /*;*/
+    transition-property: background;
+    transition-duration: 3s;
+}
+
+.display {
+
 }

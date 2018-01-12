@@ -8,6 +8,7 @@ const news = (state = [], action) => {
                     id: action.id,
                     title: action.title,
                     content: action.content,
+                    status: action.status
                 }
             ]
         case 'DELETE_NEWS':

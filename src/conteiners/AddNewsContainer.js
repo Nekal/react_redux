@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from 'prop-types'
 import {addNewsAction} from "../actions";
 
-let AddNewsContainer = (addNewsClick) => (
+let AddNewsContainer = ({addNewsClick}) => (
     <AddNewsComponent addNewsClick={addNewsClick}/>
 )
 
@@ -12,8 +12,9 @@ let AddNews = (dispatch) => {
     return ({
         addNewsClick: (title, content) => {
             if (title !== "" && content !== "") {
-                let id = dispatch(addNewsAction(title, content)).id
-                window.location.href = "/" + id
+                // let id = dispatch(addNewsAction(title, content)).id
+                dispatch(addNewsAction(title, content))
+                window.location.href = "/"
             }
         }
     })

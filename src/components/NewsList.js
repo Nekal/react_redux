@@ -12,7 +12,7 @@ const NewsList = () => (
     <div className="list">
         <ul>
             {newsList.map(news =>
-                <News key={news.id} id={news.id} title={news.title} content={news.content}/>
+                <News news={news} key={news.id}/>
             )}
         </ul>
     </div>
