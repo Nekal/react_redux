@@ -6,7 +6,7 @@ import '../styles/news.css'
 const DeleteNewsComponent = ({id, deleteNewsClick}) => {
     return (
         <button className="btn btn-primary btn-large" type={"submit"} onClick={() => {deleteNewsClick(id)}}>
-             Delete Todo
+             Delete
         </button>
     )
 }

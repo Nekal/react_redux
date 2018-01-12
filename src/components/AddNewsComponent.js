@@ -22,6 +22,7 @@ let AddNewsComponent = (addNewsClick) => {
                     <label htmlFor="listItemDescription">Description</label>
                     <textarea className="form-control" placeholder="Input description" rows="10" ref={node => {
                         content = node
+                        console.log(content.value)
                     }} />
                 </div>
                 <button className="btn btn-primary btn-large" onClick={() => {addNewsClick.addNewsClick.addNewsClick(title.value, content.value)}}>

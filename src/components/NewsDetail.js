@@ -19,7 +19,7 @@ const NewsDetail = (props) =>{
                                     <hr />
                                     <ul className="list-inline list-unstyled">
                                         <li><DeleteNewsContainer id={news.id}/></li>
-                                        {/*<li><a className='btn btn-primary' href={"/edit/" + todo.id}>Edit</a></li>*/}
+                                        <li><a className='btn btn-primary' href={"/edit/" + news.id}>Edit</a></li>
                                     </ul>
                                 </div>
                             </div>

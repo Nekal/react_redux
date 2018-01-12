@@ -6,6 +6,7 @@ import Route from "react-router-dom/es/Route";
 import AddNewsContainer from "../conteiners/AddNewsContainer";
 import NewsList from "./NewsList";
 import NewsDetail from "./NewsDetail";
+import EditNewsContainer from "../conteiners/EditNewsContainer";
 
 
 const App = () => (
@@ -16,8 +17,8 @@ const App = () => (
             <Switch>
                 <Route exact path="/" component={NewsList} />
                 <Route path="/add" component={AddNewsContainer} />
+                <Route path="/edit/:id" component={EditNewsContainer} />
                 <Route path="/:id" component={NewsDetail}/>
-                {/*<Route path="/edit/:id" component={EditTodo} />*/}
                 {/*<Route path="/:id" component={TodoDetail} />*/}
             </Switch>
             </div>
