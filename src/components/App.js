@@ -4,10 +4,9 @@ import Header from './Header'
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import Route from "react-router-dom/es/Route";
 import AddNewsContainer from "../conteiners/AddNewsContainer";
-import NewsList from "./NewsList";
-import NewsDetail from "./NewsDetail";
 import EditNewsContainer from "../conteiners/EditNewsContainer";
-
+import NewsListContainer from "../conteiners/NewsListContainer";
+import NewsDetailContainer from "../conteiners/NewsDetailContainer";
 
 const App = () => (
     <Router>
@@ -15,10 +14,10 @@ const App = () => (
             <div style={{height:936}}>
             <Header />
             <Switch>
-                <Route exact path="/" component={NewsList} />
+                <Route exact path="/" component={NewsListContainer} />
                 <Route path="/add" component={AddNewsContainer} />
                 <Route path="/edit/:id" component={EditNewsContainer} />
-                <Route path="/:id" component={NewsDetail}/>
+                <Route path="/:id" component={NewsDetailContainer}/>
             </Switch>
             </div>
             <Footer />

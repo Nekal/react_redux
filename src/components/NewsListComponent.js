@@ -1,14 +1,9 @@
 import React from 'react'
 import News from './News'
 import '../styles/newsList.css'
+import PropTypes from "prop-types";
 
-const NewsList = () => {
-    let newsList = []
-
-    for(let i = 0; i < window.localStorage.length; i++) {
-        let key = window.localStorage.key(i)
-        newsList.push(JSON.parse(window.localStorage.getItem(key)))
-    }
+const NewsListComponent = ({newsList}) => {
     return (
         <div className="list">
             <ul>
@@ -20,7 +15,8 @@ const NewsList = () => {
     )
 }
 
+NewsListComponent.propTypes = {
+    newsList: PropTypes.array.isRequired,
+}
 
-
-
-export default NewsList
+export default NewsListComponent

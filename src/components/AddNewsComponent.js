@@ -2,11 +2,11 @@ import React from 'react'
 import '../styles/addForm.css'
 import '../styles/bootstrap.css'
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
 let AddNewsComponent = ({addNewsClick}) => {
     let title
     let content
-    // let onClick = addNewsClick.addNewsClick.addNewsClick
     return (
         <div className="container">
             <div className="form-group addNews">
@@ -34,8 +34,8 @@ let AddNewsComponent = ({addNewsClick}) => {
     )
 }
 
-// AddNewsComponent.propTypes = {
-//     addNewsClick: PropTypes.func.isRequired,
-// }
+AddNewsComponent.propTypes = {
+    addNewsClick: PropTypes.func.isRequired,
+}
 
 export default AddNewsComponent

@@ -3,9 +3,10 @@ import '../styles/bootstrap.css'
 import '../styles/newsDetail.css'
 import DeleteNewsContainer from "../conteiners/DeleteNewsContainer";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
-const NewsDetail = (props) =>{
-    let news = JSON.parse(window.localStorage.getItem(props.match.params.id))
+
+const NewsDetailComponent = ({news}) =>{
     return (
         <div className='container'>
             <div className='row detail'>
@@ -31,8 +32,8 @@ const NewsDetail = (props) =>{
         </div>
     )}
 
-// NewsDetail.propTypes = {
-//     props: PropTypes.object.isRequired,
-// }
+NewsDetailComponent.propTypes = {
+    news: PropTypes.object.isRequired,
+}
 
-export default NewsDetail
+export default NewsDetailComponent
