@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/bootstrap.css'
 import '../styles/newsDetail.css'
 import DeleteNewsContainer from "../conteiners/DeleteNewsContainer";
+import {Link} from "react-router-dom";
 
 const NewsDetail = (props) =>{
     let news = JSON.parse(window.localStorage.getItem(props.match.params.id))
@@ -19,7 +20,7 @@ const NewsDetail = (props) =>{
                                     <hr />
                                     <ul className="list-inline list-unstyled">
                                         <li><DeleteNewsContainer id={news.id}/></li>
-                                        <li><a className='btn btn-primary' href={"/edit/" + news.id}>Edit</a></li>
+                                        <li><Link className='btn btn-primary' to={"/edit/" + news.id}>Edit</Link></li>
                                     </ul>
                                 </div>
                             </div>

@@ -12,9 +12,7 @@ let AddNews = (dispatch) => {
     return ({
         addNewsClick: (title, content) => {
             if (title !== "" && content !== "") {
-                // let id = dispatch(addNewsAction(title, content)).id
                 dispatch(addNewsAction(title, content))
-                window.location.href = "/"
             }
         }
     })

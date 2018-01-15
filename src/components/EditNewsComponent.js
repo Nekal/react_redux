@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/addForm.css'
 import '../styles/bootstrap.css'
 import PropTypes from 'prop-types'
+import {Link} from "react-router-dom";
 
 let EditNewsComponent = ({news, editNewsClick}) => {
     let title
@@ -24,13 +25,15 @@ let EditNewsComponent = ({news, editNewsClick}) => {
 
                     }} />
                 </div>
-                <button className="btn btn-primary btn-large" onClick={() => {
-                    news.title = title.value
-                    news.content = content.value
-                    editNewsClick(news)
-                }}>
-                    Edit
-                </button>
+                <Link to={"/" + news.id}>
+                    <button className="btn btn-primary btn-large" onClick={() => {
+                        news.title = title.value
+                        news.content = content.value
+                        editNewsClick(news)
+                    }}>
+                        Edit
+                    </button>
+                </Link>
             </div>
         </div>
     )

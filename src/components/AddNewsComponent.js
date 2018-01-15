@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/addForm.css'
 import '../styles/bootstrap.css'
-// import PropTypes from 'prop-types'
+import {Link} from "react-router-dom";
 
 let AddNewsComponent = ({addNewsClick}) => {
     let title
@@ -24,9 +24,11 @@ let AddNewsComponent = ({addNewsClick}) => {
                         content = node
                     }} />
                 </div>
-                <button className="btn btn-primary btn-large" onClick={() => {addNewsClick(title.value, content.value)}}>
-                    Add
-                </button>
+                <Link to={"/"}>
+                    <button className="btn btn-primary btn-large" onClick={() => {addNewsClick(title.value, content.value)}}>
+                        Add
+                    </button>
+                </Link>
             </div>
         </div>
     )

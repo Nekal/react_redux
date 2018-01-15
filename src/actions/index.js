@@ -3,7 +3,6 @@ export const addNewsAction = (title, content) => ({
     id: Math.random() * 100000000000000000,
     title,
     content,
-    status: "new"
 })
 
 export const deleteNewsAction = (id) => ({

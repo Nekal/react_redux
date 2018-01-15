@@ -2,6 +2,7 @@ import React from 'react'
 import {Container, Row, Col, Jumbotron,} from 'reactstrap';
 import {connect} from "react-redux";
 import '../styles/bootstrap.css'
+import {Link} from "react-router-dom";
 
 let Header = () => {
     return (
@@ -14,8 +15,8 @@ let Header = () => {
                             {/*<p>*/}
                                 <div>
                                     <form>
-                                        <a href="/" className="btn btn-primary btn-large">All news</a>
-                                        <p><a href="/add" className="btn btn-primary btn-large">Create post</a></p>
+                                        <Link to="/" className="btn btn-primary btn-large">All news</Link>
+                                        <p><Link to="/add" className="btn btn-primary btn-large">Create post</Link></p>
                                     </form>
                                 </div>
                             {/*</p>*/}

@@ -8,7 +8,7 @@ const news = (state = [], action) => {
                     id: action.id,
                     title: action.title,
                     content: action.content,
-                    status: action.status
+                    status: "new",
                 }
             ]
         case 'DELETE_NEWS':
@@ -21,7 +21,15 @@ const news = (state = [], action) => {
             ]
         case 'EDIT_NEWS':
             window.localStorage.setItem(action.id, JSON.stringify(action) );
-            return state
+            return [
+                ...state,
+                {
+                    id: action.id,
+                    title: action.title,
+                    content: action.content,
+                    status: "new",
+                }
+            ]
         default:
             return state
     }

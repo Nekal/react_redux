@@ -19,7 +19,6 @@ const App = () => (
                 <Route path="/add" component={AddNewsContainer} />
                 <Route path="/edit/:id" component={EditNewsContainer} />
                 <Route path="/:id" component={NewsDetail}/>
-                {/*<Route path="/:id" component={TodoDetail} />*/}
             </Switch>
             </div>
             <Footer />

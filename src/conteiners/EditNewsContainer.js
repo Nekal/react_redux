@@ -16,7 +16,6 @@ let EditNews = (dispatch) => {
         editNewsClick: (news) => {
             if (news.title !== "" && news.content !== "") {
                 dispatch(editNewsAction(news))
-                window.location.href = "/" + news.id
             }
         }
     })

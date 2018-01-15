@@ -14,7 +14,6 @@ let DeleteNews = (dispatch) => {
     return ({
         deleteNewsClick: (id) => {
             dispatch(deleteNewsAction(id))
-            window.location.href = "/"
         }
     })
 }

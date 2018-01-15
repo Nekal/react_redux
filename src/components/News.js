@@ -2,21 +2,31 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import '../styles/bootstrap.css'
 import '../styles/news.css'
+import {Link} from "react-router-dom";
+import {store} from "../index";
 
 const News = ({news}) => {
+    let state = store.getState()
+    let id = null
+    let index = null
+    for(let i = 0; i < state.news.length; i++) {
+        if (state.news[i] !== undefined && news.id === state.news[i].id) {
+            id = state.news[i].id
+            index = i
+        }
+    }
+
      return (
         <div  className='container' onLoad={() => {
-            if (news.status === 'new') {
+            if (state.news[index] !== undefined && news.id === state.news[index].id) {
                 document.getElementById(news.id).style.background = "white"
-                news.status = "viewed"
-                window.localStorage.setItem(news.id, JSON.stringify(news))
+                delete state.news[index]
             }
         }}>
-
             <img src={"https://vice-web-statics-cdn.vice.com/icons/close-navigation-menu-white.svg"} alt={""}/>
             <div className='row'>
                 <div className='col-md-10'>
-                    <div id={news.id} className='thumbnail animated' style={{background: news.status === "new"? "#8fcafe": "white"}}>
+                    <div id={news.id} className='thumbnail animated' style={{background: id === news.id? "#8fcafe": "white"}}>
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-12">
@@ -25,7 +35,7 @@ const News = ({news}) => {
                                     <p className="content">{news.content}</p>
                                     <hr/>
                                     <ul className="list-inline list-unstyled" style={{textAlign: 'right'}}>
-                                        <li><a href={news.id}> read me</a></li>
+                                        <li><Link to={"/" + news.id}> read me</Link></li>
                                     </ul>
                                 </div>
                             </div>
@@ -35,7 +45,6 @@ const News = ({news}) => {
             </div>
         </div>
     )
-
 }
 
 
