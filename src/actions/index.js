@@ -1,6 +1,6 @@
-export const addNewsAction = (title, content) => ({
+export const addNewsAction = (id, title, content) => ({
     type: 'ADD_NEWS',
-    id: Math.random() * 100000000000000000,
+    id: id,
     title,
     content,
 })

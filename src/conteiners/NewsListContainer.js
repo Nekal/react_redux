@@ -16,6 +16,7 @@ let NewsList = () => {
         let key = window.localStorage.key(i)
         newsList.push(JSON.parse(window.localStorage.getItem(key)))
     }
+    newsList.reverse()
     return {newsList}
 }
 

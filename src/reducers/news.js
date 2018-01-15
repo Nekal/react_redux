@@ -13,12 +13,7 @@ const news = (state = [], action) => {
             ]
         case 'DELETE_NEWS':
             window.localStorage.removeItem(action.id)
-            return [
-                ...state,
-                {
-                    id: action.id
-                }
-            ]
+            return state
         case 'EDIT_NEWS':
             window.localStorage.setItem(action.id, JSON.stringify(action) );
             return [
