@@ -5,9 +5,16 @@
 }
 
 .animated {
-    /*;*/
     transition-property: background;
     transition-duration: 3s;
+}
+
+.new {
+    background: #8fcafe;
+}
+
+.viewed {
+    background: white;
 }
 
 .display {
