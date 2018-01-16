@@ -7,6 +7,7 @@
 .animated {
     transition-property: background;
     transition-duration: 3s;
+    background: white;
 }
 
 .new {
