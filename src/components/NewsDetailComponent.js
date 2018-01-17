@@ -5,7 +5,6 @@ import DeleteNewsContainer from "../conteiners/DeleteNewsContainer";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
-
 const NewsDetailComponent = ({news}) =>{
     return (
         <div className='container'>

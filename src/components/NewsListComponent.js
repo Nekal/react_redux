@@ -2,15 +2,17 @@ import React from 'react'
 import '../styles/newsList.css'
 import PropTypes from "prop-types";
 import NewsContainer from "../conteiners/NewsContainer";
+import NewsNav from "./NewsNav";
 
 const NewsListComponent = ({newsList}) => {
     return (
-        <div className="list">
-            <ul>
+        <div>
+            <NewsNav />
+            <div className="list">
                 {newsList.map(news =>
                     <NewsContainer news={news} key={news.id}/>
                 )}
-            </ul>
+            </div>
         </div>
     )
 }

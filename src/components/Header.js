@@ -1,30 +1,32 @@
 import React from 'react'
-import {Container, Row, Col, Jumbotron,} from 'reactstrap';
 import {connect} from "react-redux";
 import '../styles/bootstrap.css'
 import {Link} from "react-router-dom";
 
 let Header = () => {
     return (
-        <div>
-            <Jumbotron>
-                <Container>
-                    <Row>
-                        <Col>
-                            <h1>Welcome to React</h1>
-                            {/*<p>*/}
-                                <div>
-                                    <form>
-                                        <Link to="/" className="btn btn-primary btn-large">All news</Link>
-                                        <p><Link to="/add" className="btn btn-primary btn-large">Create post</Link></p>
-                                    </form>
-                                </div>
-                            {/*</p>*/}
-                        </Col>
-                    </Row>
-                </Container>
-            </Jumbotron>
-        </div>)
+
+        <div className="">
+            <Link className="nav-link" to="#">Home</Link>
+            <Link className="nav-link" to="#">Home </Link>
+            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li className="nav-item active">
+                        <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="#">Link</a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="#">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    )
 }
+
 Header = connect()(Header)
 export default Header

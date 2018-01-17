@@ -15,12 +15,6 @@ let viewedNews = (id) => {
     delete state.news[getStateIndex(id)]
 }
 
-// let checkNewsClass = (document, id, status) => {
-//     if (status === "new") {
-//         document.getElementById(id).className += " viewed"
-//     }
-// }
-
 let checkStatus = (id) => {
     let news = store.getState().news[getStateIndex(id)]
     if (news !== undefined && id === news.id) {

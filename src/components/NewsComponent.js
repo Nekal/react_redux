@@ -5,20 +5,11 @@ import '../styles/news.css'
 import {Link} from "react-router-dom";
 
 const NewsComponent = ({news, status, viewedNews}) => {
-     let  elm
-     return (
-        <div  className='container' onLoad={() => {
-            if(status === "new") {
-                elm.className += " viewed"
-            }
-
-        }}>
-            <img src={"https://vice-web-statics-cdn.vice.com/icons/close-navigation-menu-white.svg"} alt={""}/>
+    return (
+        <div  className='container'>
             <div className='row'>
                 <div className='col-md-10'>
-                    <div id={news.id} className={'thumbnail animated ' + status} onAnimationEnd={viewedNews(news.id)} ref={(ref) => {
-                        elm = ref
-                    }}>
+                    <div id={news.id} className={'thumbnail animated ' + (status === "new" ? "new" : "viewed")} onAnimationEnd={viewedNews(news.id)}>
                         <div className={"container"}>
                             <div className="row">
                                 <div className="col-lg-12">
@@ -36,7 +27,7 @@ const NewsComponent = ({news, status, viewedNews}) => {
                 </div>
             </div>
         </div>
-     )
+    )
 }
 
 

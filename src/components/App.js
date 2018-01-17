@@ -7,7 +7,6 @@ import AddNewsContainer from "../conteiners/AddNewsContainer";
 import EditNewsContainer from "../conteiners/EditNewsContainer";
 import NewsListContainer from "../conteiners/NewsListContainer";
 import NewsDetailContainer from "../conteiners/NewsDetailContainer";
-import Animated from "./Animated";
 
 const App = () => (
     <Router>
@@ -18,7 +17,6 @@ const App = () => (
                 <Route exact path="/" component={NewsListContainer} />
                 <Route path="/add" component={AddNewsContainer} />
                 <Route path="/edit/:id" component={EditNewsContainer} />
-                <Route path="/animated" component={Animated} />
                 <Route path="/:id" component={NewsDetailContainer}/>
             </Switch>
             </div>

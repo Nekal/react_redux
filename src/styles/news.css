@@ -5,13 +5,16 @@
 }
 
 .animated {
-    transition-property: background;
-    transition-duration: 3s;
+
+    transition: 3s;
+    opacity: 1;
     background: white;
+    /*visibility: hidden;*/
 }
 
 .new {
     background: #8fcafe;
+    visibility: visible;
 }
 
 .viewed {
