@@ -1,16 +1,31 @@
 var express = require('express');
-var path = require('path')
+
+var bodyParser = require('body-parser');
+var http = require('http');
+var path = require('path');
+
 var app = express();
 
-app.set('port', (process.env.PORT || 3006));
+const userRoutes = require('./routes/users');
+app.use('/api', userRoutes);
 
-app.use('/app', express.static(path.resolve(__dirname, '../../build/static')));
-app.use(express.static(path.join(__dirname, '../../build')));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+app.use('/app', express.static(path.resolve(__dirname, '../../build/')));
+// app.use('/app/:id', express.static(path.resolve(__dirname, '../../build')));
+app.use(express.static(path.resolve(__dirname, '../../build/')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../build/index.html'));
+    res.sendFile(path.resolve(__dirname, '../../build/'));
 })
 
-app.listen(app.get('port'), function() {
-    console.log('Server started: http://localhost:' + app.get('port') + '/');
+app.get('*', (req, res) => {
+    res.send('Sorry, page not found!');
+});
+
+app.set('port', 3100);
+
+http.createServer(app).listen(app.get('port'), function(){
+    console.log('Express server listening on port ' + app.get('port'));
 });

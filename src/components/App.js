@@ -7,6 +7,7 @@ import AddNewsContainer from "../conteiners/AddNewsContainer";
 import EditNewsContainer from "../conteiners/EditNewsContainer";
 import NewsListContainer from "../conteiners/NewsListContainer";
 import NewsDetailContainer from "../conteiners/NewsDetailContainer";
+import SignUpContainer from "../conteiners/SignUpContainer";
 
 const App = () => (
     <Router>
@@ -17,7 +18,8 @@ const App = () => (
                 <Route exact path="/" component={NewsListContainer} />
                 <Route path="/add" component={AddNewsContainer} />
                 <Route path="/edit/:id" component={EditNewsContainer} />
-                <Route path="/:id" component={NewsDetailContainer}/>
+                <Route path="/signup" component={SignUpContainer} />
+                <Route path="/news/:id" component={NewsDetailContainer}/>
             </Switch>
             </div>
             <Footer />

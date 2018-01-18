@@ -1,3 +1,5 @@
+import SignUpService from "../services/UserService";
+
 export const addNewsAction = (id, title, content) => ({
     type: 'ADD_NEWS',
     id: id,
@@ -16,3 +18,15 @@ export const editNewsAction = (news) => ({
     title: news.title,
     content: news.content,
 })
+
+export const signUpAction = (user) => {
+    SignUpService({username: user.username,
+        email: user.email,
+        password: user.password})
+    return({
+    type: 'SIGN_UP',
+    username: user.username,
+    email: user.email,
+    password: user.password,
+})
+}
