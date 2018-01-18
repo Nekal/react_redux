@@ -2,7 +2,7 @@ import superagent from 'superagent'
 import Promise from 'bluebird'
 
 export default {
-    get: (url, params) => {
+    get(url, params) {
         return new Promise((resolve, reject) => {
             superagent
                 .get(url)
@@ -22,22 +22,15 @@ export default {
             })
     },
 
-    post: (url, params) => {
+    post (url, params) {
         return new Promise((resolve, reject) => {
             superagent
                 .post(url)
-                .query(params)
+                .send(params)
                 .set('Accept', 'application/json')
                 .end((err, response) => {
-                    if (err) {
-                        reject(err)
-                        return
-                    }
-                    if (response.body.confirmation !== 'success'){
-                        reject({message: response.body.message})
-                        return
-                    }
-                    resolve(response.body)
+                    console.log(response)
+                    console.log(err)
                 })
         })
     }

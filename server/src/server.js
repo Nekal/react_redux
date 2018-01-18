@@ -1,23 +1,21 @@
 var express = require('express');
-
 var bodyParser = require('body-parser');
 var http = require('http');
 var path = require('path');
 
 var app = express();
 
-const userRoutes = require('./routes/users');
-app.use('/api', userRoutes);
-
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+const userRoutes = require('./routes/users');
+app.use('/api', userRoutes);
+
 app.use('/app', express.static(path.resolve(__dirname, '../../build/')));
-// app.use('/app/:id', express.static(path.resolve(__dirname, '../../build')));
 app.use(express.static(path.resolve(__dirname, '../../build/')));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../../build/'));
+app.get('/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../build/index.html'));
 })
 
 app.get('*', (req, res) => {
