@@ -28,9 +28,12 @@ export default {
                 .post(url)
                 .send(params)
                 .set('Accept', 'application/json')
-                .end((err, response) => {
-                    console.log(response)
-                    console.log(err)
+                .then((response) => {
+                    if (response.body.message !== 'success'){
+                        reject({message: response.body.message})
+                        return
+                    }
+                    resolve(response.body)
                 })
         })
     }

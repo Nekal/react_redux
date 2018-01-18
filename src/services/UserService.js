@@ -3,11 +3,11 @@ import { APIManager } from '../utils'
 const SignUpService = (params) => {
     APIManager
         .post('api/signup', params)
-        .then(response => {
-            console.log("OK: " + response)
+        .then((response) => {
+            console.log("OK: " + JSON.stringify(response))
         })
-        .catch((err) => {
-            console.log('ERROR ' + err)
+        .catch(err => {
+            console.log('ERROR: ' + JSON.stringify(err))
         })
 }
 

@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.post('/signup', (req, res) => {
         console.log(req.body)
-        res.send(req.body)
+        res.send({message: 'success'})
     }
 );
 
