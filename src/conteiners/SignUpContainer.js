@@ -10,8 +10,8 @@ let SignUpContainer = ({signUpClick}) => (
 
 let SignUp = (dispatch) => {
     return ({
-        signUpClick: (username, email, password) => {
-            dispatch(signUpAction({username, email, password}))
+        signUpClick: (username, email, password, role) => {
+            dispatch(signUpAction({username, email, password, role}))
         }
     })
 }

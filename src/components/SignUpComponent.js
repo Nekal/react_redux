@@ -31,7 +31,7 @@ let SignUpComponent = ({signUpClick}) => {
                         }} />
                     </div>
                     <button className="btn btn-primary btn-lg" onClick={() => {
-                        signUpClick(username.value, email.value, password.value)
+                        signUpClick(username.value, email.value, password.value, "user")
                     }}>Sign Up</button>
             </div>
         </div>

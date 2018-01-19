@@ -2,7 +2,6 @@ import React from 'react'
 import '../styles/bootstrap.css'
 
 let HeaderComponent = ({userData, logoutClick}) => {
-    console.log(userData)
     return (
         <header className="navbar-inverse ">
             <div className="container">

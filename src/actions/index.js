@@ -1,11 +1,21 @@
 import {SignInService, SignUpService} from "../services/UserService";
+import {AddNewsService, GetAllNewsService} from "../services/NewsService";
 
-export const addNewsAction = (id, title, content) => ({
-    type: 'ADD_NEWS',
-    id: id,
-    title,
-    content,
-})
+export const addNewsAction = (title, description) => {
+    AddNewsService({
+        title: description,
+        description: description,
+    })
+    return({
+        type: 'ADD_NEWS',
+        title,
+        description,
+    })
+}
+
+export const getAllNewsAction = () => {
+    return GetAllNewsService()
+}
 
 export const deleteNewsAction = (id) => ({
     type: 'DELETE_NEWS',
@@ -23,13 +33,15 @@ export const signUpAction = (user) => {
     SignUpService({
         username: user.username,
         email: user.email,
-        password: user.password
+        password: user.password,
+        role: user.role
     })
     return ({
         type: 'SIGN_UP',
         username: user.username,
         email: user.email,
         password: user.password,
+        role: user.type
     })
 }
 

@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 let AddNewsComponent = ({addNewsClick}) => {
     let title
-    let content
+    let description
     return (
         <div className="container">
             <div className="form-group addNews">
@@ -22,11 +22,11 @@ let AddNewsComponent = ({addNewsClick}) => {
                 <div className="form-group">
                     <label htmlFor="listItemDescription">Description</label>
                     <textarea className="form-control" placeholder="Input description" rows="10" ref={node => {
-                        content = node
+                        description = node
                     }} />
                 </div>
                 <Link to={"/"}>
-                    <button className="btn btn-primary btn-large" onClick={() => {addNewsClick(title.value, content.value)}}>
+                    <button className="btn btn-primary btn-large" onClick={() => {addNewsClick(title.value, description.value)}}>
                         Add
                     </button>
                 </Link>

@@ -4,8 +4,7 @@ const router = express.Router();
 let user = require('../controllers/user')
 
 router.post('/signup', (req, res) => {
-    console.log(req.body)
-    user.create(req.body.username, req.body.email, req.body.password)
+    user.create(req.body.username, req.body.email, req.body.password, req.body.role)
         .then(function(newUser){
             sendResult(res, newUser);
         })

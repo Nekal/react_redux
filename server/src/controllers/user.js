@@ -10,9 +10,9 @@ module.exports = {
                 }})
             )
     },
-    create(username, email, password){
+    create(username, email, password, role){
         return(
-            User.create({username, email, password})
+            User.create({username, email, password, role})
         )
     },
 }
