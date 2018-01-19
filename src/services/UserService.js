@@ -1,14 +1,31 @@
 import { APIManager } from '../utils'
 
-const SignUpService = (params) => {
+export const SignUpService = (params) => {
     APIManager
         .post('api/signup', params)
         .then((response) => {
-            console.log("OK: " + JSON.stringify(response))
+            if(response.body.errors !== undefined) {
+                alert(response.body.errors[0].message)
+            } else {
+                window.location.href = "/signin"
+            }
         })
         .catch(err => {
             console.log('ERROR: ' + JSON.stringify(err))
         })
 }
 
-export default SignUpService
+export const SignInService = (params) => {
+    APIManager
+        .get('api/signin', params)
+        .then((response) => {
+            if(response.isEmpty()) {
+                // window.location.href = "/"
+            } else {
+                alert("Username or password don't match")
+            }
+        })
+        .catch(err => {
+            console.log('ERROR: ' + JSON.stringify(err))
+        })
+}

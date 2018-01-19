@@ -1,4 +1,4 @@
-import SignUpService from "../services/UserService";
+import {SignInService, SignUpService} from "../services/UserService";
 
 export const addNewsAction = (id, title, content) => ({
     type: 'ADD_NEWS',
@@ -20,13 +20,28 @@ export const editNewsAction = (news) => ({
 })
 
 export const signUpAction = (user) => {
-    SignUpService({username: user.username,
+    SignUpService({
+        username: user.username,
         email: user.email,
-        password: user.password})
-    return({
-    type: 'SIGN_UP',
-    username: user.username,
-    email: user.email,
-    password: user.password,
-})
+        password: user.password
+    })
+    return ({
+        type: 'SIGN_UP',
+        username: user.username,
+        email: user.email,
+        password: user.password,
+    })
 }
+
+export const signInAction = (user) => {
+    SignInService({
+        username: user.username,
+        password: user.password
+    })
+    return ({
+        type: 'SIGN_IN',
+        username: user.username,
+        password: user.password,
+    })
+}
+

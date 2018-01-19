@@ -8,16 +8,12 @@ export default {
                 .get(url)
                 .query(params)
                 .set('Accept', 'application/json')
-                .end((err, response) => {
-                    if (err) {
-                        reject(err)
+                .end((response) => {
+                    if (response.status !== 200){
+                        reject({message: response.message})
                         return
                     }
-                    if (response.body.confirmation !== 'success'){
-                        reject({message: response.body.message})
-                        return
-                    }
-                    resolve(response.body)
+                    resolve(response)
                 })
             })
     },
@@ -29,11 +25,12 @@ export default {
                 .send(params)
                 .set('Accept', 'application/json')
                 .then((response) => {
-                    if (response.body.message !== 'success'){
-                        reject({message: response.body.message})
+                    if (response.status !== 200){
+                        alert(JSON.stringify(response))
+                        reject({message: response.message})
                         return
                     }
-                    resolve(response.body)
+                    resolve(response)
                 })
         })
     }

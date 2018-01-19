@@ -18,7 +18,7 @@ const NewsComponent = ({news, status, viewedNews}) => {
                                     <p className="content">{news.content}</p>
                                     <hr/>
                                     <ul className="list-inline list-unstyled" style={{textAlign: 'right'}}>
-                                        <li><Link to={"/" + news.id}> read me</Link></li>
+                                        <li><Link to={"/news/" + news.id}> read me</Link></li>
                                     </ul>
                                 </div>
                             </div>

@@ -4,24 +4,17 @@ import '../styles/bootstrap.css'
 import PropTypes from "prop-types";
 
 
-let SignUpComponent = ({signUpClick}) => {
+let SignInComponent = ({signInClick}) => {
     let username
-    let email
     let password
     return (
         <div className="container" style={{marginTop: 200}}>
             <div className="col-sm-6 col-sm-offset-3">
-                <h1> Sign Up </h1>
+                <h1>Sign In</h1>
                     <div className="form-group">
                         <label>Username</label>
                         <input type="text" className="form-control" name="username" ref={(ref) => {
                             username = ref
-                        }} />
-                    </div>
-                    <div className="form-group">
-                        <label>Email</label>
-                        <input type="email" className="form-control" name="email" ref={(ref) => {
-                            email = ref
                         }} />
                     </div>
                     <div className="form-group">
@@ -31,15 +24,15 @@ let SignUpComponent = ({signUpClick}) => {
                         }} />
                     </div>
                     <button className="btn btn-primary btn-lg" onClick={() => {
-                        signUpClick(username.value, email.value, password.value)
+                        signInClick(username.value, password.value)
                     }}>Sign Up</button>
             </div>
         </div>
     )
 }
 
-SignUpComponent.propTypes = {
-    signUpClick: PropTypes.func.isRequired,
+SignInComponent.propTypes = {
+    signInClick: PropTypes.func.isRequired,
 }
 
-export default SignUpComponent
+export default SignInComponent

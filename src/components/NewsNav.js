@@ -15,9 +15,7 @@ let NewsNav = () => {
                             {/*<p>*/}
                                 <div>
                                     <form>
-                                        <Link to="/" className="btn btn-primary btn-large">All news</Link>
                                         <p><Link to="/add" className="btn btn-primary btn-large">Create post</Link></p>
-                                        <p><Link to="/signup" className="btn btn-primary btn-large">Sign Up</Link></p>
                                     </form>
                                 </div>
                             {/*</p>*/}
