@@ -8,7 +8,7 @@ export default {
                 .get(url)
                 .query(params)
                 .set('Accept', 'application/json')
-                .end((response) => {
+                .then((response) => {
                     if (response.status !== 200){
                         reject({message: response.message})
                         return
@@ -26,7 +26,6 @@ export default {
                 .set('Accept', 'application/json')
                 .then((response) => {
                     if (response.status !== 200){
-                        alert(JSON.stringify(response))
                         reject({message: response.message})
                         return
                     }

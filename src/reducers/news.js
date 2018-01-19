@@ -1,7 +1,7 @@
 const news = (state = [], action) => {
     switch (action.type) {
         case 'ADD_NEWS':
-            window.localStorage.setItem(action.id, JSON.stringify(action));
+            // window.localStorage.setItem(action.id, JSON.stringify(action));
             return [
                 ...state,
                 {
@@ -15,7 +15,7 @@ const news = (state = [], action) => {
             window.localStorage.removeItem(action.id)
             return state
         case 'EDIT_NEWS':
-            window.localStorage.setItem(action.id, JSON.stringify(action) );
+            // window.localStorage.setItem(action.id, JSON.stringify(action) );
             return [
                 ...state,
                 {

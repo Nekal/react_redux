@@ -12,11 +12,11 @@ let NewsListContainer = ({newsList}) => {
 let NewsList = () => {
     let newsList = []
 
-    for(let i = 0; i < window.localStorage.length; i++) {
-        let key = window.localStorage.key(i)
-        newsList.push(JSON.parse(window.localStorage.getItem(key)))
-    }
-    newsList.reverse()
+    // for(let i = 0; i < window.localStorage.length; i++) {
+    //     let key = window.localStorage.key(i)
+    //     newsList.push(JSON.parse(window.localStorage.getItem(key)))
+    // }
+    // newsList.reverse()
     return {newsList}
 }
 
