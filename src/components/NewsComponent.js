@@ -4,18 +4,19 @@ import '../styles/bootstrap.css'
 import '../styles/news.css'
 import {Link} from "react-router-dom";
 
-const NewsComponent = ({news, status, viewedNews}) => {
+const NewsComponent = ({news}) => {
     return (
         <div  className='container'>
             <div className='row'>
                 <div className='col-md-10'>
-                    <div id={news.id} className={'thumbnail animated ' + (status === "new" ? "new" : "viewed")} onAnimationEnd={viewedNews(news.id)}>
+                    {/*<div id={news.id} className={'thumbnail animated ' + (status === "new" ? "new" : "viewed")} onAnimationEnd={viewedNews(news.id)}>*/}
+                    <div id={news.id} className={'thumbnail'}>
                         <div className={"container"}>
                             <div className="row">
                                 <div className="col-lg-12">
                                     <h1 className="mt-12">{news.title}</h1 >
                                     <hr/>
-                                    <p className="content">{news.content}</p>
+                                    <p className="content">{news.description}</p>
                                     <hr/>
                                     <ul className="list-inline list-unstyled" style={{textAlign: 'right'}}>
                                         <li><Link to={"/news/" + news.id}> read me</Link></li>

@@ -1,14 +1,13 @@
 import { APIManager } from '../utils'
 
 export const AddNewsService = (params) => {
-    console.log(params)
     APIManager
         .post('api/add', params)
         .then((response) => {
             if(response.body.errors !== undefined) {
                 alert(response.body.errors[0].message)
             } else {
-                window.location.href = "/" + response.body.id
+                window.location.href = "/"
             }
         })
         .catch(err => {
@@ -17,13 +16,55 @@ export const AddNewsService = (params) => {
 }
 
 export const GetAllNewsService = () => {
+    return (
+        APIManager
+            .get('api/getAllNews')
+            .then((response) => {
+                if(response.body.errors !== undefined) {
+                    alert(response.body.errors[0].message)
+                } else {
+                    return new Promise((resolve) => {resolve(response.body)})
+                }
+            })
+    )
+}
+
+export const GetNewsService = (params) => {
+    return (
+        APIManager
+            .get('api/getNews', params)
+            .then((response) => {
+                if(response.body.errors !== undefined) {
+                    alert(response.body.errors[0].message)
+                } else {
+                    return new Promise((resolve) => {resolve(response.body)})
+                }
+            })
+    )
+}
+
+export const deleteNewsService = (params) => {
+    return (
+        APIManager
+            .delete('api/deleteNews', params)
+            .then((response) => {
+                if(response.body.errors !== undefined) {
+                    alert(response.body.errors[0].message)
+                } else {
+                    return new Promise((resolve) => {resolve(response.body)})
+                }
+            })
+    )
+}
+
+export const editNewsService = (params) => {
     APIManager
-        .get('api/getAllNews')
+        .post('api/editNews', params)
         .then((response) => {
             if(response.body.errors !== undefined) {
                 alert(response.body.errors[0].message)
             } else {
-              return response.body
+                window.location.href = "/"
             }
         })
         .catch(err => {

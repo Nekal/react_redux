@@ -17,16 +17,17 @@ router.get('/signin', (req, res) => {
     user.findUser(req.query.username, req.query.password)
         .then(function(result){
             sendResult(res, result);
-        }).catch(function(error){
+        })
+        .catch(function(error){
             sendError(res, error);
         });
 });
 
-function sendResult(res, result){
+function sendResult(res, result) {
     res.send(result);
 }
 
-function sendError(res, result){
+function sendError(res, result) {
     res.send(result);
 }
 

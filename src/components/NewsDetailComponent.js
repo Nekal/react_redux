@@ -14,13 +14,13 @@ const NewsDetailComponent = ({news}) =>{
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-12">
-                                    <h1 className="mt-3">{news.title}</h1>
+                                    <h1 className="mt-3">{news.activeNews.title}</h1>
                                     <hr />
-                                    <p>{news.content}</p>
+                                    <p>{news.activeNews.description}</p>
                                     <hr />
                                     <ul className="list-inline list-unstyled">
-                                        <li><DeleteNewsContainer id={news.id}/></li>
-                                        <li><Link className='btn btn-primary' to={"/edit/" + news.id}>Edit</Link></li>
+                                        <li><DeleteNewsContainer id={news.activeNews.id}/></li>
+                                        <li><Link className='btn btn-primary' to={"/edit/" + news.activeNews.id}>Edit</Link></li>
                                     </ul>
                                 </div>
                             </div>

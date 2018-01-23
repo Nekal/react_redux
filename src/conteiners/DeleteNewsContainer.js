@@ -13,7 +13,7 @@ let DeleteNewsContainer = ({id, deleteNewsClick}) => {
 let DeleteNews = (dispatch) => {
     return ({
         deleteNewsClick: (id) => {
-            dispatch(deleteNewsAction(id))
+            deleteNewsAction(dispatch, id)
         }
     })
 }

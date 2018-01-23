@@ -8,17 +8,17 @@ var path = require('path')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/api', require('./routes/users'));
-app.use('/api', require('./routes/news'));
+app.use('*/api', require('./routes/users'));
+app.use('*/api', require('./routes/news'));
 
 
-app.use('/app', express.static(path.resolve(__dirname, '../../build/')));
+app.use('/app/:id', express.static(path.resolve(__dirname, '../../build/')));
 app.use(express.static(path.resolve(__dirname, '../../build/')));
 app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../../build/index.html'));
 })
 
-app.set('port', 3101);
+app.set('port', 8080);
 
 const models = require("./models");
 

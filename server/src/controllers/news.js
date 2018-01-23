@@ -8,15 +8,33 @@ module.exports = {
     },
     findById(id){
         return (
-            News.findById({
-                where: {
-                    id: id,
-                }})
+            News.findById(id)
         )
     },
     create(title, description){
         return(
             News.create({title, description})
+        )
+    },
+    destroy(id){
+        return(
+            News.destroy({
+                where: {
+                    id: id
+                }
+            })
+        )
+    },
+
+    update(id, title, description){
+        return(
+            News.update({title, description}, {
+                title,
+                description,
+                where: {
+                    id: id
+                }
+            })
         )
     },
 }

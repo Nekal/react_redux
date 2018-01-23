@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import NewsContainer from "../conteiners/NewsContainer";
 import NewsNav from "./NewsNav";
 
-const NewsListComponent = ({newsList}) => {
+const NewsListComponent = ({news}) => {
     return (
         <div>
             <NewsNav />
             <div className="list">
-                {newsList.map(news =>
+                {news.newsList.map(news =>
                     <NewsContainer news={news} key={news.id}/>
                 )}
             </div>
@@ -18,7 +18,7 @@ const NewsListComponent = ({newsList}) => {
 }
 
 NewsListComponent.propTypes = {
-    newsList: PropTypes.array.isRequired,
+    news: PropTypes.object.isRequired,
 }
 
 export default NewsListComponent

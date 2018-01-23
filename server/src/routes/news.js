@@ -3,8 +3,17 @@ const router = express.Router();
 
 let news = require('../controllers/news')
 
-router.get('/getAllNews', (req, res) => {
-    news.findAll()
+router.get('/getNews', (req, res) => {
+    news.findById(req.query.id)
+        .then(function(result){
+            sendResult(res, result);
+        }).catch(function(error){
+            sendError(res, error);
+        });
+});
+
+router.delete('/deleteNews', (req, res) => {
+    news.destroy(req.query.id)
         .then(function(result){
             sendResult(res, result);
         }).catch(function(error){
@@ -12,8 +21,26 @@ router.get('/getAllNews', (req, res) => {
     });
 });
 
+router.post('/editNews', (req, res) => {
+    console.log("HELLO!")
+    news.update(req.body.id, req.body.title, req.body.description)
+        .then(function(result){
+            sendResult(res, result);
+        }).catch(function(error){
+        sendError(res, error);
+    });
+});
+
+router.get('/getAllNews', (req, res) => {
+    news.findAll()
+        .then(function(result){
+            sendResult(res, result);
+        }).catch(function(error){
+            sendError(res, error);
+        });
+});
+
 router.post('/add', (req, res) => {
-    console.log(req.body)
     news.create(req.body.title, req.body.description)
         .then(function(newNews){
             sendResult(res, newNews);
@@ -21,15 +48,6 @@ router.post('/add', (req, res) => {
         .catch(function(error){
             sendError(res, error);
         });
-});
-
-router.get('/news/:id', (req, res) => {
-    news.findById(req.query.id)
-        .then(function(result){
-            sendResult(res, result);
-        }).catch(function(error){
-        sendError(res, error);
-    });
 });
 
 function sendResult(res, result){

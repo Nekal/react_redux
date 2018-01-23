@@ -1,7 +1,16 @@
-const news = (state = [], action) => {
+const news = (state = {}, action) => {
     switch (action.type) {
+        case 'SHOW_NEWS':
+            return {
+                newsList: [...state.newsList],
+                activeNews: action.newsItem,
+            }
+        case 'SHOW_ALL_NEWS':
+            return {
+                newsList: action.newsList,
+                activeNews: {...state.activeNews},
+            }
         case 'ADD_NEWS':
-            // window.localStorage.setItem(action.id, JSON.stringify(action));
             return [
                 ...state,
                 {

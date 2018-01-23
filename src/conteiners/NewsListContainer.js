@@ -1,43 +1,30 @@
 import { connect } from 'react-redux'
 import React from "react";
-// import PropTypes from 'prop-types'
 import NewsListComponent from "../components/NewsListComponent";
 import {getAllNewsAction} from "../actions";
+// import PropTypes from 'prop-types'
 
-let NewsListContainer = () => {
-    getAllNewsAction()
-        .then((newsList) => {
-            console.log(newsList)
-            return (
-                <NewsListComponent newsList={newsList}/>
-            )
-        })
-        .catch(err => {
-            console.log('ERROR: ' + JSON.stringify(err))
-        })
-
-
-    // console.log(newsList)
-    // return (
-    //     <NewsListComponent newsList={newsList}/>
-    // )
+let NewsListContainer = (props) => {
+    const news = props.news;
+    return (
+        <NewsListComponent news={news}/>
+    )
 }
 
-// let NewsList = () => {
-//     let newsList = getAllNewsAction()
-//     console.log("container " + JSON.stringify(newsList))
-//     if(newsList !== undefined) {
-//         return {newsList}
-//     } else {
-//         return []
-//     }
-//
-// }
+let showNews = (dispatch) => {
+    getAllNewsAction(dispatch)
+}
 
 // NewsListContainer.propTypes = {
 //     newsList: PropTypes.array.isRequired,
 // }
 
-NewsListContainer = connect()(NewsListContainer)
+const mapStateToProps = (state) => {
+    return {
+        news: state.news
+    };
+};
+
+NewsListContainer = connect(mapStateToProps, showNews)(NewsListContainer)
 
 export default NewsListContainer

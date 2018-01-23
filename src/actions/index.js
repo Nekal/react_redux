@@ -1,5 +1,8 @@
 import {SignInService, SignUpService} from "../services/UserService";
-import {AddNewsService, GetAllNewsService} from "../services/NewsService";
+import {
+    AddNewsService, deleteNewsService, editNewsService, GetAllNewsService,
+    GetNewsService
+} from "../services/NewsService";
 
 export const addNewsAction = (title, description) => {
     AddNewsService({
@@ -13,21 +16,57 @@ export const addNewsAction = (title, description) => {
     })
 }
 
-export const getAllNewsAction = () => {
-    return GetAllNewsService()
+export const getAllNewsAction = (dispatch) => {
+
+    GetAllNewsService()
+        .then((newsList => {
+            dispatch({
+                type: 'SHOW_ALL_NEWS',
+                newsList
+            })
+        }))
 }
 
-export const deleteNewsAction = (id) => ({
-    type: 'DELETE_NEWS',
-    id
-})
 
-export const editNewsAction = (news) => ({
-    type: 'EDIT_NEWS',
-    id: news.id,
-    title: news.title,
-    content: news.content,
-})
+
+export const getNewsAction = (dispatch, id, news) => {
+    // console.log("news: " + JSON.stringify(news))
+    // const newsItem = news.find(news => news.id === id);
+    //
+    // if (newsItem) {
+    //     console.log("if: " + JSON.stringify(newsItem))
+    //     dispatch({
+    //         type: 'SHOW_NEWS',
+    //         newsItem
+    //     });
+    // } else {
+    GetNewsService({id: id})
+        .then((newsItem => {
+            dispatch({
+                type: 'SHOW_NEWS',
+                newsItem
+            })
+        }));
+    // }
+}
+
+export const deleteNewsAction = (dispatch, id) => {
+    deleteNewsService({id: id})
+        .then((() => {
+            window.location.href = '/'
+        }));
+}
+
+export const editNewsAction = (dispatch, id, title, description) => {
+    editNewsService({
+            id,
+            title,
+            description
+        })
+        .then((() => {
+            window.location.href = '/'
+        }));
+}
 
 export const signUpAction = (user) => {
     SignUpService({
