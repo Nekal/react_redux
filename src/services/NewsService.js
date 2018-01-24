@@ -59,7 +59,7 @@ export const deleteNewsService = (params) => {
 
 export const editNewsService = (params) => {
     APIManager
-        .post('api/', params)
+        .post('api/editNews', params)
         .then((response) => {
             if(response.body.errors !== undefined) {
                 alert(response.body.errors[0].message)

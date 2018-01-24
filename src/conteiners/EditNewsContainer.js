@@ -3,32 +3,32 @@ import React from "react";
 import {editNewsAction, getNewsAction} from "../actions";
 import EditNewsComponent from "../components/EditNewsComponent";
 import {getUserData} from "../services/UserService";
+import NotFound from "../components/NotFound";
 
 let EditNewsContainer = (props) => {
-    checkUserData()
     let news  = props.news
-    props.getNews(props.match.params.id, news)
+
     return (
-        <EditNewsComponent news={news} editNewsClick={props.editNewsClick}/>
+        <div>
+        {checkUserData() ? (
+            <EditNewsComponent news={news} editNewsClick={props.editNewsClick}/>
+        ) : (<NotFound/>)}
+        </div>
     )
 }
 
 const checkUserData = () => {
     let userData = getUserData()
-    if (userData === null || userData.role !== "admin") {
-        window.location.href = '/'
-    }
+    return (userData !== null && userData.role === "admin");
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
+    getNewsAction(dispatch, props.match.params.id)
     return ({
         editNewsClick: (id, title, description) => {
             if (title !== "" && description !== "") {
                 editNewsAction(dispatch, id, title, description)
             }
-        },
-        getNews: (id, news) => {
-            getNewsAction(dispatch, id, news)
         }
     })
 }

@@ -9,6 +9,7 @@ import NewsDetailContainer from "../conteiners/NewsDetailContainer";
 import SignUpContainer from "../conteiners/SignUpContainer";
 import SignInContainer from "../conteiners/SignInContainer";
 import HeaderContainer from "../conteiners/HeaderContainer";
+import NotFound from "./NotFound";
 
 const App = () => (
     <Router>
@@ -22,6 +23,7 @@ const App = () => (
                     <Route path="/signup" component={SignUpContainer} />
                     <Route path="/signin" component={SignInContainer} />
                     <Route path="/news/:id" component={NewsDetailContainer}/>
+                    <Route path="/:id" component={NotFound}/>
                 </Switch>
             </div>
             <Footer />

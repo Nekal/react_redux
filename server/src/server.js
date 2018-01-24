@@ -18,7 +18,7 @@ app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../../build/index.html'));
 })
 
-app.set('port', 8080);
+app.set('port', 8000);
 
 const models = require("./models");
 

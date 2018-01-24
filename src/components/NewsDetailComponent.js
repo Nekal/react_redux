@@ -6,8 +6,6 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
 const NewsDetailComponent = ({news, userData}) =>{
-    console.log(userData.role)
-    console.log(userData)
     return (
         <div className='container'>
             <div className='row detail'>

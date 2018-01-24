@@ -22,7 +22,6 @@ router.delete('/deleteNews', (req, res) => {
 });
 
 router.post('/editNews', (req, res) => {
-    console.log("HELLO!")
     news.update(req.body.id, req.body.title, req.body.description)
         .then(function(result){
             sendResult(res, result);

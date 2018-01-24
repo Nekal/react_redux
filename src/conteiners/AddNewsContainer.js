@@ -4,19 +4,24 @@ import React from "react";
 import PropTypes from 'prop-types'
 import {addNewsAction} from "../actions";
 import {getUserData} from "../services/UserService";
+import NotFound from "../components/NotFound";
 
 let AddNewsContainer = ({addNewsClick}) => {
-    checkUserData()
+    // return (
+    //     <AddNewsComponent addNewsClick={addNewsClick}/>
+    // )
     return (
-        <AddNewsComponent addNewsClick={addNewsClick}/>
+        <div>
+            {checkUserData() ? (
+                <AddNewsComponent addNewsClick={addNewsClick}/>
+            ) : (<NotFound/>)}
+        </div>
     )
 }
 
 const checkUserData = () => {
     let userData = getUserData()
-    if (userData === null || userData.role !== "admin") {
-        window.location.href = '/'
-    }
+    return (userData !== null && userData.role === "admin");
 }
 
 let AddNews = (dispatch) => {

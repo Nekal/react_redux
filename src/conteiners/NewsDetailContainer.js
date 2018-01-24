@@ -7,19 +7,13 @@ import {getUserData} from "../services/UserService";
 let NewsDetailContainer = (props) => {
     let news  = props.news
     console.log(news)
-    props.getNews(props.match.params.id, news)
     return (
         <NewsDetailComponent news={news} userData={getUserData()}/>
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    console.log("map")
-    return ({
-        getNews: (id, news) => {
-            getNewsAction(dispatch, id, news)
-        }
-    })
+const mapDispatchToProps = (dispatch, props) => {
+    getNewsAction(dispatch, props.match.params.id)
 }
 
 const mapStateToProps = (state) => {

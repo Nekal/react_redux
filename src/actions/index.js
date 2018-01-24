@@ -20,10 +20,12 @@ export const getAllNewsAction = (dispatch) => {
 
     GetAllNewsService()
         .then((newsList => {
-            dispatch({
-                type: 'SHOW_ALL_NEWS',
-                newsList
-            })
+            if (newsList.name === undefined) {
+                dispatch({
+                    type: 'SHOW_ALL_NEWS',
+                    newsList
+                })
+            }
         }))
 }
 
