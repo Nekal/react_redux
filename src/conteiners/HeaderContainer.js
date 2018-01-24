@@ -2,16 +2,12 @@ import { connect } from 'react-redux'
 import React from "react";
 import PropTypes from 'prop-types'
 import HeaderComponent from "../components/HeaderComponent";
+import {getUserData} from "../services/UserService";
 
 let HeaderContainer = ({logoutClick}) => {
     return (
-        <HeaderComponent userData={UserData()} logoutClick={logoutClick}/>
+        <HeaderComponent userData={getUserData()} logoutClick={logoutClick}/>
     )
-}
-
-const UserData = () => {
-    let userData = JSON.parse(window.localStorage.getItem('USER_DATA'))
-    return userData
 }
 
 let Logout = () => {

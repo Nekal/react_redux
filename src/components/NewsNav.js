@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import '../styles/bootstrap.css'
 import {Link} from "react-router-dom";
 
-let NewsNav = () => {
+let NewsNav = ({userData}) => {
     return (
         <div>
             <Jumbotron>
@@ -12,13 +12,12 @@ let NewsNav = () => {
                     <Row>
                         <Col>
                             <h1>Welcome to React</h1>
-                            {/*<p>*/}
-                                <div>
-                                    <form>
-                                        <p><Link to="/add" className="btn btn-primary btn-large">Create post</Link></p>
-                                    </form>
-                                </div>
-                            {/*</p>*/}
+                            <div>
+                                {userData !== null && userData.role === "admin" ? (
+                                <form>
+                                    <p><Link to="/add" className="btn btn-primary btn-large">Create post</Link></p>
+                                </form>) : ""}
+                            </div>
                         </Col>
                     </Row>
                 </Container>

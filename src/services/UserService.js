@@ -32,7 +32,7 @@ export const SignInService = (params) => {
 }
 
 export  const getUserData = () => {
-    let user = window.localStorage.getItem('USER_DATA')
+    let user = JSON.parse(window.localStorage.getItem('USER_DATA'))
     if(user) {
         return user
     } else {

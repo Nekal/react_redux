@@ -5,7 +5,9 @@ import DeleteNewsContainer from "../conteiners/DeleteNewsContainer";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
-const NewsDetailComponent = ({news}) =>{
+const NewsDetailComponent = ({news, userData}) =>{
+    console.log(userData.role)
+    console.log(userData)
     return (
         <div className='container'>
             <div className='row detail'>
@@ -17,11 +19,14 @@ const NewsDetailComponent = ({news}) =>{
                                     <h1 className="mt-3">{news.activeNews.title}</h1>
                                     <hr />
                                     <p>{news.activeNews.description}</p>
-                                    <hr />
+
+                                    {userData !== null && userData.role === "admin" ? (
+
                                     <ul className="list-inline list-unstyled">
+                                        <hr />
                                         <li><DeleteNewsContainer id={news.activeNews.id}/></li>
                                         <li><Link className='btn btn-primary' to={"/edit/" + news.activeNews.id}>Edit</Link></li>
-                                    </ul>
+                                    </ul>): ''}
                                 </div>
                             </div>
                         </div>
