@@ -11,15 +11,7 @@ const news = (state = {}, action) => {
                 activeNews: {...state.activeNews},
             }
         case 'ADD_NEWS':
-            return [
-                ...state,
-                {
-                    id: action.id,
-                    title: action.title,
-                    content: action.content,
-                    status: "new",
-                }
-            ]
+            return state
         case 'DELETE_NEWS':
             window.localStorage.removeItem(action.id)
             return state

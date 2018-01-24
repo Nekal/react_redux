@@ -2,8 +2,9 @@ import { connect } from 'react-redux'
 import React from "react";
 import {editNewsAction, getNewsAction} from "../actions";
 import EditNewsComponent from "../components/EditNewsComponent";
-import {getUserData} from "../services/UserService";
 import NotFound from "../components/NotFound";
+import UserService from "../services/UserService";
+import PropTypes from "prop-types";
 
 let EditNewsContainer = (props) => {
     let news  = props.news
@@ -18,7 +19,7 @@ let EditNewsContainer = (props) => {
 }
 
 const checkUserData = () => {
-    let userData = getUserData()
+    let userData = UserService.getUserData()
     return (userData !== null && userData.role === "admin");
 }
 
@@ -38,6 +39,10 @@ const mapStateToProps = (state) => {
         news: state.news
     };
 };
+
+EditNewsContainer.propTypes = {
+    props: PropTypes.object.isRequired,
+}
 
 EditNewsContainer = connect(mapStateToProps, mapDispatchToProps)(EditNewsContainer)
 

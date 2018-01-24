@@ -3,13 +3,10 @@ import AddNewsComponent from "../components/AddNewsComponent";
 import React from "react";
 import PropTypes from 'prop-types'
 import {addNewsAction} from "../actions";
-import {getUserData} from "../services/UserService";
 import NotFound from "../components/NotFound";
+import UserService from "../services/UserService";
 
 let AddNewsContainer = ({addNewsClick}) => {
-    // return (
-    //     <AddNewsComponent addNewsClick={addNewsClick}/>
-    // )
     return (
         <div>
             {checkUserData() ? (
@@ -20,7 +17,7 @@ let AddNewsContainer = ({addNewsClick}) => {
 }
 
 const checkUserData = () => {
-    let userData = getUserData()
+    let userData = UserService.getUserData()
     return (userData !== null && userData.role === "admin");
 }
 
@@ -28,7 +25,7 @@ let AddNews = (dispatch) => {
     return ({
         addNewsClick: (title, description) => {
             if (title !== "" && description !== "") {
-                dispatch(addNewsAction(title, description))
+                addNewsAction(dispatch, title, description)
             }
         }
     })

@@ -2,11 +2,11 @@ import { connect } from 'react-redux'
 import React from "react";
 import PropTypes from 'prop-types'
 import HeaderComponent from "../components/HeaderComponent";
-import {getUserData} from "../services/UserService";
+import UserService from "../services/UserService";
 
 let HeaderContainer = ({logoutClick}) => {
     return (
-        <HeaderComponent userData={getUserData()} logoutClick={logoutClick}/>
+        <HeaderComponent userData={UserService.getUserData()} logoutClick={logoutClick}/>
     )
 }
 
@@ -19,7 +19,7 @@ let Logout = () => {
 }
 
 HeaderContainer.propTypes = {
-    props: PropTypes.object.isRequired,
+    logoutClick: PropTypes.func.isRequired,
 }
 
 HeaderContainer = connect(null, Logout)(HeaderContainer)

@@ -3,7 +3,9 @@ News = require("../models/").news
 module.exports = {
     findAll(){
         return (
-            News.findAll()
+            News.findAll({
+                order: [['id', 'DESC']]
+            })
         )
     },
     findById(id){

@@ -1,24 +1,25 @@
-import {SignInService, SignUpService} from "../services/UserService";
-import {
-    AddNewsService, deleteNewsService, editNewsService, GetAllNewsService,
-    GetNewsService
-} from "../services/NewsService";
+import NewsService from "../services/NewsService";
+import UserService from "../services/UserService";
 
-export const addNewsAction = (title, description) => {
-    AddNewsService({
+let newsService = new NewsService()
+let userService = new UserService()
+
+export const addNewsAction = (dispatch, title, description) => {
+    newsService.addNews({
         title: description,
         description: description,
-    })
-    return({
-        type: 'ADD_NEWS',
-        title,
-        description,
+    }).then(() => {
+        dispatch({
+            type: 'ADD_NEWS',
+            title,
+            description
+        })
+        window.location.href = "/"
     })
 }
 
 export const getAllNewsAction = (dispatch) => {
-
-    GetAllNewsService()
+    newsService.getAllNews()
         .then((newsList => {
             if (newsList.name === undefined) {
                 dispatch({
@@ -42,7 +43,7 @@ export const getNewsAction = (dispatch, id, news) => {
     //         newsItem
     //     });
     // } else {
-    GetNewsService({id: id})
+    newsService.getNews({id: id})
         .then((newsItem => {
             dispatch({
                 type: 'SHOW_NEWS',
@@ -53,14 +54,14 @@ export const getNewsAction = (dispatch, id, news) => {
 }
 
 export const deleteNewsAction = (dispatch, id) => {
-    deleteNewsService({id: id})
+    newsService.deleteNews({id: id})
         .then((() => {
             window.location.href = '/'
         }));
 }
 
 export const editNewsAction = (dispatch, id, title, description) => {
-    editNewsService({
+    newsService.editNews({
             id,
             title,
             description
@@ -71,7 +72,7 @@ export const editNewsAction = (dispatch, id, title, description) => {
 }
 
 export const signUpAction = (user) => {
-    SignUpService({
+    userService.signUp({
         username: user.username,
         email: user.email,
         password: user.password,
@@ -87,7 +88,7 @@ export const signUpAction = (user) => {
 }
 
 export const signInAction = (user) => {
-    SignInService({
+    userService.signIn({
         username: user.username,
         password: user.password
     })
