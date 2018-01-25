@@ -10,7 +10,7 @@ const NewsListComponent = ({news}) => {
             <NewsNavContainer />
             <div className="list">
                 {news.newsList.map(news =>
-                    <NewsContainer news={news} key={news.id}/>
+                    <NewsContainer newsItem={news} key={news.id}/>
                 )}
             </div>
         </div>

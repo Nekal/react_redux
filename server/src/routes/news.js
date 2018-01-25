@@ -3,25 +3,27 @@ const router = express.Router();
 
 let news = require('../controllers/news')
 
-router.get('/getNews', (req, res) => {
+router.get('/news', (req, res) => {
     news.findById(req.query.id)
-        .then(function(result){
+        .then((result)=> {
             sendResult(res, result);
-        }).catch(function(error){
+        })
+        .catch(function(error){
             sendError(res, error);
         });
 });
 
-router.delete('/deleteNews', (req, res) => {
+router.delete('/news', (req, res) => {
     news.destroy(req.query.id)
         .then(function(result){
             sendResult(res, result);
-        }).catch(function(error){
-        sendError(res, error);
+        })
+        .catch(function(error){
+            sendError(res, error);
     });
 });
 
-router.post('/editNews', (req, res) => {
+router.put('/news', (req, res) => {
     news.update(req.body.id, req.body.title, req.body.description)
         .then(function(result){
             sendResult(res, result);
@@ -30,7 +32,7 @@ router.post('/editNews', (req, res) => {
     });
 });
 
-router.get('/getAllNews', (req, res) => {
+router.get('/allnews', (req, res) => {
     news.findAll()
         .then(function(result){
             sendResult(res, result);

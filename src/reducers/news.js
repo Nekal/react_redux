@@ -4,14 +4,20 @@ const news = (state = {}, action) => {
             return {
                 newsList: [...state.newsList],
                 activeNews: action.newsItem,
+                addedNews:{...state.addedNews}
             }
         case 'SHOW_ALL_NEWS':
             return {
                 newsList: action.newsList,
                 activeNews: {...state.activeNews},
+                addedNews: {...state.addedNews}
             }
         case 'ADD_NEWS':
-            return state
+            return {
+                newsList: [...state.newsList],
+                activeNews: {...state.activeNews},
+                addedNews: action.newsItem
+            }
         case 'DELETE_NEWS':
             window.localStorage.removeItem(action.id)
             return state

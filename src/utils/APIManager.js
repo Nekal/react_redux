@@ -34,6 +34,22 @@ export default {
         })
     },
 
+    put(url, params) {
+        return new Promise((resolve, reject) => {
+            superagent
+                .put(url)
+                .send(params)
+                .set('Accept', 'application/json')
+                .then((response) => {
+                    if (response.status !== 200){
+                        reject({message: response.message})
+                        return
+                    }
+                    resolve(response)
+                })
+        })
+    },
+
     delete(url, params) {
         return new Promise((resolve, reject) => {
             superagent

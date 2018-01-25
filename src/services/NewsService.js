@@ -13,7 +13,7 @@ class NewsService {
     addNews = (params) => {
         return (
             APIManager
-                .post('api/add', params)
+                .post('/api/add', params)
                 .then((response) => {
                     if(response.body.errors !== undefined) {
                         alert(response.body.errors[0].message)
@@ -30,7 +30,7 @@ class NewsService {
     getAllNews = () => {
         return (
             APIManager
-                .get('api/getAllNews')
+                .get('/api/allnews')
                 .then((response) => {
                     if(response.body.errors !== undefined) {
                         alert(response.body.errors[0].message)
@@ -44,7 +44,7 @@ class NewsService {
     getNews = (params) => {
         return (
             APIManager
-                .get('api/getNews', params)
+                .get('/api/news', params)
                 .then((response) => {
                     if(response.body.errors !== undefined) {
                         alert(response.body.errors[0].message)
@@ -58,7 +58,7 @@ class NewsService {
     deleteNews = (params) => {
         return (
             APIManager
-                .delete('api/deleteNews', params)
+                .delete('/api/news', params)
                 .then((response) => {
                     if(response.body.errors !== undefined) {
                         alert(response.body.errors[0].message)
@@ -72,7 +72,7 @@ class NewsService {
     editNews = (params) => {
         return (
             APIManager
-                .post('api/editNews', params)
+                .put('/api/news', params)
                 .then((response) => {
                     if(response.body.errors !== undefined) {
                         alert(response.body.errors[0].message)

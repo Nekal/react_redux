@@ -15,8 +15,6 @@ let showNews = (dispatch) => {
     getAllNewsAction(dispatch)
 }
 
-
-
 const mapStateToProps = (state) => {
     return {
         news: state.news

@@ -8,13 +8,12 @@ export const addNewsAction = (dispatch, title, description) => {
     newsService.addNews({
         title: description,
         description: description,
-    }).then(() => {
+    }).then((newsItem) => {
         dispatch({
             type: 'ADD_NEWS',
-            title,
-            description
+            newsItem
         })
-        window.location.href = "/"
+        // window.location.href = "/"
     })
 }
 
