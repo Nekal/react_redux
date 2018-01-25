@@ -9,14 +9,14 @@
 //         }
 //     }
 // ]
-let user = require('../controllers/user')
+let user = require('../controllers/user');
 
 module.exports = () => {
-    user.create("admin", "admin@test.com", "admin", "admin")
-    .then(function(newUser){
+    user.create('admin', 'admin@test.com', 'admin', 'admin')
+        .then(function (newUser) {
 
-    })
-    .catch(function(error){
-         // console.log("Error in admin");
-    });
-}
+        })
+        .catch(function (error) {
+            // console.log("Error in admin");
+        });
+};

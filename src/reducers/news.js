@@ -4,23 +4,23 @@ const news = (state = {}, action) => {
             return {
                 newsList: [...state.newsList],
                 activeNews: action.newsItem,
-                addedNews:{...state.addedNews}
-            }
+                addedNews: {...state.addedNews}
+            };
         case 'SHOW_ALL_NEWS':
             return {
                 newsList: action.newsList,
                 activeNews: {...state.activeNews},
                 addedNews: {...state.addedNews}
-            }
+            };
         case 'ADD_NEWS':
             return {
                 newsList: [...state.newsList],
                 activeNews: {...state.activeNews},
                 addedNews: action.newsItem
-            }
+            };
         case 'DELETE_NEWS':
-            window.localStorage.removeItem(action.id)
-            return state
+            window.localStorage.removeItem(action.id);
+            return state;
         case 'EDIT_NEWS':
             // window.localStorage.setItem(action.id, JSON.stringify(action) );
             return [
@@ -29,12 +29,12 @@ const news = (state = {}, action) => {
                     id: action.id,
                     title: action.title,
                     content: action.content,
-                    status: "new",
+                    status: 'new'
                 }
-            ]
+            ];
         default:
-            return state
+            return state;
     }
-}
+};
 
-export default news
+export default news;

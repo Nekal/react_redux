@@ -16,12 +16,12 @@ const users = (state = [], action) => {
                 {
                     username: action.username,
                     email: action.email,
-                    passwod: action.passwod,
+                    passwod: action.passwod
                 }
-            ]
+            ];
         default:
-            return state
+            return state;
     }
-}
+};
 
-export default users
+export default users;

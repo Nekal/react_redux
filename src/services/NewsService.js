@@ -1,7 +1,6 @@
 import { APIManager } from '../utils'
 
 class NewsService {
-    newsService = null
 
     constructor() {
         if (this.newsService === null) {
@@ -24,8 +23,8 @@ class NewsService {
                 .catch(err => {
                     console.log('ERROR: ' + JSON.stringify(err))
                 })
-            )
-    }
+        )
+    };
 
     getAllNews = () => {
         return (
@@ -38,8 +37,11 @@ class NewsService {
                         return new Promise((resolve) => {resolve(response.body)})
                     }
                 })
+                .catch(err => {
+                    console.log('ERROR: ' + JSON.stringify(err))
+                })
         )
-    }
+    };
 
     getNews = (params) => {
         return (
@@ -52,8 +54,11 @@ class NewsService {
                         return new Promise((resolve) => {resolve(response.body)})
                     }
                 })
+                .catch(err => {
+                    console.log('ERROR: ' + JSON.stringify(err))
+                })
         )
-    }
+    };
 
     deleteNews = (params) => {
         return (
@@ -66,8 +71,11 @@ class NewsService {
                         return new Promise((resolve) => {resolve(response.body)})
                     }
                 })
+                .catch(err => {
+                    console.log('ERROR: ' + JSON.stringify(err))
+                })
         )
-    }
+    };
 
     editNews = (params) => {
         return (
@@ -80,7 +88,10 @@ class NewsService {
                         return new Promise((resolve) => {resolve(response.body)})
                     }
                 })
-            )
+                .catch(err => {
+                    console.log('ERROR: ' + JSON.stringify(err))
+                })
+        )
     }
 }
 

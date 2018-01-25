@@ -1,68 +1,39 @@
-import superagent from 'superagent'
-import Promise from 'bluebird'
+import superagent from 'superagent';
 
 export default {
-    get(url, params) {
-        return new Promise((resolve, reject) => {
+    get (url, params) {
+        return (
             superagent
                 .get(url)
                 .query(params)
                 .set('Accept', 'application/json')
-                .then((response) => {
-                    if (response.status !== 200){
-                        reject({message: response.message})
-                        return
-                    }
-                    resolve(response)
-                })
-            })
+        );
     },
 
-    post(url, params) {
-        return new Promise((resolve, reject) => {
+    post (url, params) {
+        return (
             superagent
                 .post(url)
                 .send(params)
                 .set('Accept', 'application/json')
-                .then((response) => {
-                    if (response.status !== 200){
-                        reject({message: response.message})
-                        return
-                    }
-                    resolve(response)
-                })
-        })
+        );
     },
 
-    put(url, params) {
-        return new Promise((resolve, reject) => {
+    put (url, params) {
+        return (
             superagent
                 .put(url)
                 .send(params)
                 .set('Accept', 'application/json')
-                .then((response) => {
-                    if (response.status !== 200){
-                        reject({message: response.message})
-                        return
-                    }
-                    resolve(response)
-                })
-        })
+        );
     },
 
-    delete(url, params) {
-        return new Promise((resolve, reject) => {
+    delete (url, params) {
+        return (
             superagent
                 .delete(url)
                 .query(params)
                 .set('Accept', 'application/json')
-                .then((response) => {
-                    if (response.status !== 200){
-                        reject({message: response.message})
-                        return
-                    }
-                    resolve(response)
-                })
-        })
-    },
-}
+        );
+    }
+};

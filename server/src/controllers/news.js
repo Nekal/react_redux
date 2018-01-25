@@ -1,35 +1,35 @@
-News = require("../models/").news
+News = require('../models/').news;
 
 module.exports = {
-    findAll(){
+    findAll () {
         return (
             News.findAll({
                 order: [['id', 'DESC']]
             })
-        )
+        );
     },
-    findById(id){
+    findById (id) {
         return (
             News.findById(id)
-        )
+        );
     },
-    create(title, description){
-        return(
+    create (title, description) {
+        return (
             News.create({title, description})
-        )
+        );
     },
-    destroy(id){
-        return(
+    destroy (id) {
+        return (
             News.destroy({
                 where: {
                     id: id
                 }
             })
-        )
+        );
     },
 
-    update(id, title, description){
-        return(
+    update (id, title, description) {
+        return (
             News.update({title, description}, {
                 title,
                 description,
@@ -37,8 +37,6 @@ module.exports = {
                     id: id
                 }
             })
-        )
-    },
-}
-
-
+        );
+    }
+};
