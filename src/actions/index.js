@@ -1,13 +1,13 @@
 import NewsService from '../services/NewsService';
 import UserService from '../services/UserService';
 
-let newsService = new NewsService();
-let userService = new UserService();
+const newsService = new NewsService();
+const userService = new UserService();
 
 export const addNewsAction = (dispatch, title, description) => {
   newsService.addNews({
     title: description,
-    description: description
+    description
   }).then((newsItem) => {
     dispatch({
       type: 'ADD_NEWS',
@@ -19,7 +19,7 @@ export const addNewsAction = (dispatch, title, description) => {
 
 export const getAllNewsAction = (dispatch) => {
   newsService.getAllNews()
-    .then(newsList => {
+    .then((newsList) => {
       if (newsList.name === undefined) {
         dispatch({
           type: 'SHOW_ALL_NEWS',
@@ -40,8 +40,8 @@ export const getNewsAction = (dispatch, id) => {
   //         newsItem
   //     });
   // } else {
-  newsService.getNews({id: id})
-    .then(newsItem => {
+  newsService.getNews({ id })
+    .then((newsItem) => {
       dispatch({
         type: 'SHOW_NEWS',
         newsItem
@@ -51,7 +51,7 @@ export const getNewsAction = (dispatch, id) => {
 };
 
 export const deleteNewsAction = (dispatch, id) => {
-  newsService.deleteNews({id: id})
+  newsService.deleteNews({ id })
     .then(() => {
       window.location.href = '/';
     });

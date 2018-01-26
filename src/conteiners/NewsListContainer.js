@@ -1,30 +1,28 @@
-import { connect } from 'react-redux';
 import React from 'react';
-import NewsListComponent from '../components/NewsListComponent';
-import {getAllNewsAction} from '../actions';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-let NewsListContainer = (props) => {
-  const news = props.news;
+import NewsListComponent from '../components/NewsListComponent';
+import { getAllNewsAction } from '../actions';
+
+const NewsListContainer = (props) => {
+  const { news } = props;
   return (
     <NewsListComponent news={news}/>
   );
 };
 
-let showNews = (dispatch) => {
+const showNews = (dispatch) => {
   getAllNewsAction(dispatch);
 };
 
-const mapStateToProps = (state) => {
-  return {
-    news: state.news
-  };
-};
+const mapStateToProps = state => ({
+  news: state.news
+});
 
 NewsListContainer.propTypes = {
-  props: PropTypes.object.isRequired
+  props: PropTypes.object.isRequired,
+  news: PropTypes.object.isRequired
 };
 
-NewsListContainer = connect(mapStateToProps, showNews)(NewsListContainer);
-
-export default NewsListContainer;
+export default connect(mapStateToProps, showNews)(NewsListContainer);

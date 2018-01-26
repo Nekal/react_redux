@@ -1,9 +1,9 @@
 import React from 'react';
+
 import '../styles/bootstrap.css';
 import '../styles/notFound.css';
 
-const NotFound = () => {
-  return (
+const NotFound = () => (
     <div className='row'>
       <div className='col-md-12'>
         <div className='error-template'>
@@ -24,7 +24,6 @@ const NotFound = () => {
         </div>
       </div>
     </div>
-  );
-};
+);
 
 export default NotFound;

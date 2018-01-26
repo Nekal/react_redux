@@ -1,25 +1,23 @@
-import { connect } from 'react-redux';
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SignUpComponent from '../components/SignUpComponent';
-import {signUpAction} from '../actions';
+import { signUpAction } from '../actions';
 
-let SignUpContainer = ({signUpClick}) => (
+const SignUpContainer = ({ signUpClick }) => (
   <SignUpComponent signUpClick={signUpClick}/>
 );
 
-let SignUp = (dispatch) => {
-  return ({
-    signUpClick: (username, email, password, role) => {
-      dispatch(signUpAction({username, email, password, role}));
-    }
-  });
-};
+const SignUp = dispatch => ({
+  signUpClick: (username, email, password, role) => {
+    dispatch(signUpAction({
+      username, email, password, role
+    }));
+  }
+});
 
 SignUpContainer.propTypes = {
   signUpClick: PropTypes.func.isRequired
 };
 
-SignUpContainer = connect(null, SignUp)(SignUpContainer);
-
-export default SignUpContainer;
+export default connect(null, SignUp)(SignUpContainer);

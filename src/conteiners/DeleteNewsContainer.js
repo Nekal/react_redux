@@ -1,28 +1,23 @@
-import { connect } from 'react-redux';
-import DeleteNewsComponent from '../components/DeleteNewsComponent';
 import React from 'react';
 import PropTypes from 'prop-types';
-import {deleteNewsAction} from '../actions';
+import { connect } from 'react-redux';
 
-let DeleteNewsContainer = ({id, deleteNewsClick}) => {
-  return (
+import DeleteNewsComponent from '../components/DeleteNewsComponent';
+import { deleteNewsAction } from '../actions';
+
+const DeleteNewsContainer = ({ id, deleteNewsClick }) => (
     <DeleteNewsComponent id={id} deleteNewsClick={deleteNewsClick}/>
-  );
-};
+);
 
-let DeleteNews = (dispatch) => {
-  return ({
-    deleteNewsClick: (id) => {
-      deleteNewsAction(dispatch, id);
-    }
-  });
-};
+const DeleteNews = dispatch => ({
+  deleteNewsClick: (id) => {
+    deleteNewsAction(dispatch, id);
+  }
+});
 
 DeleteNewsContainer.propTypes = {
   id: PropTypes.number.isRequired,
   deleteNewsClick: PropTypes.func.isRequired
 };
 
-DeleteNewsContainer = connect(null, DeleteNews)(DeleteNewsContainer);
-
-export default DeleteNewsContainer;
+export default connect(null, DeleteNews)(DeleteNewsContainer);

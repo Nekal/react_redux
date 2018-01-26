@@ -4,18 +4,18 @@ const news = (state = {}, action) => {
       return {
         newsList: [...state.newsList],
         activeNews: action.newsItem,
-        addedNews: {...state.addedNews}
+        addedNews: { ...state.addedNews }
       };
     case 'SHOW_ALL_NEWS':
       return {
         newsList: action.newsList,
-        activeNews: {...state.activeNews},
-        addedNews: {...state.addedNews}
+        activeNews: { ...state.activeNews },
+        addedNews: { ...state.addedNews }
       };
     case 'ADD_NEWS':
       return {
         newsList: [...state.newsList],
-        activeNews: {...state.activeNews},
+        activeNews: { ...state.activeNews },
         addedNews: action.newsItem
       };
     case 'DELETE_NEWS':

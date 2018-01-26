@@ -1,11 +1,11 @@
 import React from 'react';
-import {Container, Row, Col, Jumbotron} from 'reactstrap';
-import {connect} from 'react-redux';
-import '../styles/bootstrap.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-let NewsNav = ({userData}) => {
-  return (
+import { Container, Row, Col, Jumbotron } from 'reactstrap';
+import '../styles/bootstrap.css';
+
+const NewsNav = ({ userData }) => (
     <div>
       <Jumbotron>
         <Container>
@@ -22,7 +22,11 @@ let NewsNav = ({userData}) => {
           </Row>
         </Container>
       </Jumbotron>
-    </div>);
+    </div>
+);
+
+NewsNav.propTypes = {
+  userData: PropTypes.func.isRequired
 };
-NewsNav = connect()(NewsNav);
+
 export default NewsNav;

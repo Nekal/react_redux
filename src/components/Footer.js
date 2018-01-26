@@ -1,9 +1,9 @@
 import React from 'react';
+
 import '../styles/bootstrap.css';
 import '../styles/footer.css';
 
-const Footer = () => {
-  return (
+const Footer = () => (
     <div className='footer-bottom navbar-fixed-bottom'>
       <div className='container'>
         <div className='row'>
@@ -20,7 +20,6 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  );
-};
+);
 
 export default Footer;

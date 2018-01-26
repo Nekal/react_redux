@@ -1,5 +1,3 @@
 import APIManager from './APIManager';
 
-export {
-  APIManager
-};
+export default APIManager;

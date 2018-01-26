@@ -1,33 +1,28 @@
-import { connect } from 'react-redux';
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import NewsComponent from '../components/NewsComponent';
 
-let NewsContainer = ({newsItem, news, getStatus}) => {
+const NewsContainer = ({ newsItem, news, getStatus }) => {
   getStatus(newsItem, news);
   return (
     <NewsComponent news={newsItem} status={getStatus(newsItem, news.addedNews)}/>
   );
 };
 
-const mapDispatchToProps = () => {
-  return ({
-    getStatus: (newsItem, addedNews) => {
-      return (addedNews && addedNews.id === newsItem.id);
-    }
-  });
-};
+const mapDispatchToProps = () => ({
+  getStatus: (newsItem, addedNews) => (addedNews && addedNews.id === newsItem.id)
+});
 
-const mapStateToProps = (state) => {
-  return {
-    news: state.news
-  };
-};
+const mapStateToProps = state => ({
+  news: state.news
+});
 
 NewsContainer.propTypes = {
-  news: PropTypes.object.isRequired
+  newsItem: PropTypes.object.isRequired,
+  news: PropTypes.object.isRequired,
+  getStatus: PropTypes.func.isRequired
 };
 
-NewsContainer = connect(mapStateToProps, mapDispatchToProps)(NewsContainer);
-
-export default NewsContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer);

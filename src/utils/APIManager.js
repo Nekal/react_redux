@@ -1,7 +1,7 @@
 import superagent from 'superagent';
 
 export default {
-  get (url, params) {
+  get(url, params) {
     return (
       superagent
         .get(url)
@@ -10,7 +10,7 @@ export default {
     );
   },
 
-  post (url, params) {
+  post(url, params) {
     return (
       superagent
         .post(url)
@@ -19,7 +19,7 @@ export default {
     );
   },
 
-  put (url, params) {
+  put(url, params) {
     return (
       superagent
         .put(url)
@@ -28,7 +28,7 @@ export default {
     );
   },
 
-  delete (url, params) {
+  delete(url, params) {
     return (
       superagent
         .delete(url)

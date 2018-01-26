@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import '../styles/bootstrap.css';
 
-let HeaderComponent = ({userData, logoutClick}) => {
-  return (
+const HeaderComponent = ({ userData, logoutClick }) => (
     <header className='navbar-inverse '>
       <div className='container'>
         <div className='nav navbar-left'>
@@ -21,6 +22,11 @@ let HeaderComponent = ({userData, logoutClick}) => {
         )}
       </div>
     </header>
-  );
+);
+
+HeaderComponent.propTypes = {
+  userData: PropTypes.func.isRequired,
+  logoutClick: PropTypes.func.isRequired
 };
+
 export default HeaderComponent;

@@ -1,14 +1,15 @@
 import React from 'react';
-import '../styles/addForm.css';
-import '../styles/bootstrap.css';
 import PropTypes from 'prop-types';
 
-let SignInComponent = ({signInClick}) => {
+import '../styles/addForm.css';
+import '../styles/bootstrap.css';
+
+const SignInComponent = ({ signInClick }) => {
   let username;
 
   let password;
   return (
-    <div className='container' style={{marginTop: 200}}>
+    <div className='container' style={{ marginTop: 200 }}>
       <div className='col-sm-6 col-sm-offset-3'>
         <h1>Sign In</h1>
         <div className='form-group'>

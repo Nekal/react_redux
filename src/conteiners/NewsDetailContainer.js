@@ -1,12 +1,13 @@
-import { connect } from 'react-redux';
 import React from 'react';
-import NewsDetailComponent from '../components/NewsDetailComponent';
-import {getNewsAction} from '../actions';
-import UserService from '../services/UserService';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-let NewsDetailContainer = (props) => {
-  let news = props.news;
+import NewsDetailComponent from '../components/NewsDetailComponent';
+import { getNewsAction } from '../actions';
+import UserService from '../services/UserService';
+
+const NewsDetailContainer = (props) => {
+  const { news } = props;
   return (
     <NewsDetailComponent news={news} userData={UserService.getUserData()}/>
   );
@@ -16,16 +17,13 @@ const mapDispatchToProps = (dispatch, props) => {
   getNewsAction(dispatch, props.match.params.id);
 };
 
-const mapStateToProps = (state) => {
-  return {
-    news: state.news
-  };
-};
+const mapStateToProps = state => ({
+  news: state.news
+});
 
 NewsDetailContainer.propTypes = {
-  props: PropTypes.object.isRequired
+  props: PropTypes.object.isRequired,
+  news: PropTypes.object.isRequired
 };
 
-NewsDetailContainer = connect(mapStateToProps, mapDispatchToProps)(NewsDetailContainer);
-
-export default NewsDetailContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(NewsDetailContainer);

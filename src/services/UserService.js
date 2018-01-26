@@ -1,14 +1,14 @@
-import { APIManager } from '../utils';
+import APIManager from '../utils';
 
 let instance = null;
 
 class UserService {
-  constructor () {
+  constructor() {
     instance = instance || this;
     return instance;
   }
 
-  signUp (params) {
+  signUp = (params) => {
     APIManager
       .post('api/signup', params)
       .then((response) => {
@@ -18,12 +18,12 @@ class UserService {
           window.location.href = '/signin';
         }
       })
-      .catch(err => {
-        console.log('ERROR: ' + JSON.stringify(err));
+      .catch((err) => {
+        console.log(`ERROR: ${JSON.stringify(err)}`);
       });
-  };
+  }
 
-  signIn (params) {
+  signIn = (params) => {
     APIManager
       .get('api/signin', params)
       .then((response) => {
@@ -34,18 +34,17 @@ class UserService {
           console.log('Username or password dont match');
         }
       })
-      .catch(err => {
-        console.log('ERROR: ' + JSON.stringify(err));
+      .catch((err) => {
+        console.log(`ERROR: ${JSON.stringify(err)}`);
       });
-  };
+  }
 
-  static getUserData () {
-    let user = JSON.parse(window.localStorage.getItem('USER_DATA'));
+  static getUserData() {
+    const user = JSON.parse(window.localStorage.getItem('USER_DATA'));
     if (user) {
       return user;
-    } else {
-      return null;
     }
+    return null;
   }
 }
 

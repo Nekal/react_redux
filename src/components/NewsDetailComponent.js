@@ -1,12 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import '../styles/bootstrap.css';
 import '../styles/newsDetail.css';
 import DeleteNewsContainer from '../conteiners/DeleteNewsContainer';
-import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-const NewsDetailComponent = ({news, userData}) => {
-  return (
+const NewsDetailComponent = ({ news, userData }) => (
     <div className='container'>
       <div className='row detail'>
         <div className='col-md-12'>
@@ -23,7 +23,7 @@ const NewsDetailComponent = ({news, userData}) => {
                     <ul className='list-inline list-unstyled'>
                       <hr />
                       <li><DeleteNewsContainer id={news.activeNews.id}/></li>
-                      <li><Link className='btn btn-primary' to={'/edit/' + news.activeNews.id}>Edit</Link></li>
+                      <li><Link className='btn btn-primary' to={`/edit/${news.activeNews.id}`}>Edit</Link></li>
                     </ul>) : ''}
                 </div>
               </div>
@@ -32,11 +32,11 @@ const NewsDetailComponent = ({news, userData}) => {
         </div>
       </div>
     </div>
-  );
-};
+);
 
 NewsDetailComponent.propTypes = {
-  news: PropTypes.object.isRequired
+  news: PropTypes.object.isRequired,
+  userData: PropTypes.object.isRequired
 };
 
 export default NewsDetailComponent;
