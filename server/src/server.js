@@ -21,14 +21,16 @@ app.set('port', 8000);
 
 const models = require('./models');
 
-models.sequelize.sync().then(function () {
-    console.log('Nice! Database looks fine');
-}).catch(function (err) {
-    console.log(err, 'Something went wrong with the Database Update!');
+models.sequelize.sync()
+    .then(() => {
+        console.log('Nice! Database looks fine');
+    })
+    .catch((err) => {
+        console.log(err, 'Something went wrong with the Database Update!');
 });
 
 require('./seeders/admin')();
 
-http.createServer(app).listen(app.get('port'), function () {
+http.createServer(app).listen(app.get('port'), () => {
     console.log('Express server listening on port ' + app.get('port'));
 });

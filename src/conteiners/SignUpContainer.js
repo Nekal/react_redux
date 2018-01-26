@@ -5,19 +5,19 @@ import SignUpComponent from '../components/SignUpComponent';
 import {signUpAction} from '../actions';
 
 let SignUpContainer = ({signUpClick}) => (
-    <SignUpComponent signUpClick={signUpClick}/>
+  <SignUpComponent signUpClick={signUpClick}/>
 );
 
 let SignUp = (dispatch) => {
-    return ({
-        signUpClick: (username, email, password, role) => {
-            dispatch(signUpAction({username, email, password, role}));
-        }
-    });
+  return ({
+    signUpClick: (username, email, password, role) => {
+      dispatch(signUpAction({username, email, password, role}));
+    }
+  });
 };
 
 SignUpContainer.propTypes = {
-    signUpClick: PropTypes.func.isRequired
+  signUpClick: PropTypes.func.isRequired
 };
 
 SignUpContainer = connect(null, SignUp)(SignUpContainer);

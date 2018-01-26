@@ -5,18 +5,18 @@ import '../styles/news.css';
 import {Link} from 'react-router-dom';
 
 const DeleteNewsComponent = ({id, deleteNewsClick}) => {
-    return (
-        <Link to={'/'}>
-            <button className='btn btn-primary btn-large' type={'submit'} onClick={() => { deleteNewsClick(id) }}>
+  return (
+    <Link to={'/'}>
+      <button className='btn btn-primary btn-large' type={'submit'} onClick={() => { deleteNewsClick(id); }}>
                  Delete
-            </button>
-        </Link>
-    );
+      </button>
+    </Link>
+  );
 };
 
 DeleteNewsComponent.propTypes = {
-    id: PropTypes.number.isRequired,
-    deleteNewsClick: PropTypes.func.isRequired
+  id: PropTypes.number.isRequired,
+  deleteNewsClick: PropTypes.func.isRequired
 };
 
 export default DeleteNewsComponent;

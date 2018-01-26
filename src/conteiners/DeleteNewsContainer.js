@@ -5,22 +5,22 @@ import PropTypes from 'prop-types';
 import {deleteNewsAction} from '../actions';
 
 let DeleteNewsContainer = ({id, deleteNewsClick}) => {
-    return (
-        <DeleteNewsComponent id={id} deleteNewsClick={deleteNewsClick}/>
-    );
+  return (
+    <DeleteNewsComponent id={id} deleteNewsClick={deleteNewsClick}/>
+  );
 };
 
 let DeleteNews = (dispatch) => {
-    return ({
-        deleteNewsClick: (id) => {
-            deleteNewsAction(dispatch, id);
-        }
-    });
+  return ({
+    deleteNewsClick: (id) => {
+      deleteNewsAction(dispatch, id);
+    }
+  });
 };
 
 DeleteNewsContainer.propTypes = {
-    id: PropTypes.number.isRequired,
-    deleteNewsClick: PropTypes.func.isRequired
+  id: PropTypes.number.isRequired,
+  deleteNewsClick: PropTypes.func.isRequired
 };
 
 DeleteNewsContainer = connect(null, DeleteNews)(DeleteNewsContainer);

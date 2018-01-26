@@ -7,41 +7,41 @@ import UserService from '../services/UserService';
 import PropTypes from 'prop-types';
 
 let EditNewsContainer = (props) => {
-    let news = props.news;
+  let news = props.news;
 
-    return (
-        <div>
-            {checkUserData() ? (
-                <EditNewsComponent news={news} editNewsClick={props.editNewsClick}/>
-            ) : (<NotFound/>)}
-        </div>
-    );
+  return (
+    <div>
+      {checkUserData() ? (
+        <EditNewsComponent news={news} editNewsClick={props.editNewsClick}/>
+      ) : (<NotFound/>)}
+    </div>
+  );
 };
 
 const checkUserData = () => {
-    let userData = UserService.getUserData();
-    return (userData !== null && userData.role === 'admin');
+  let userData = UserService.getUserData();
+  return (userData !== null && userData.role === 'admin');
 };
 
 const mapDispatchToProps = (dispatch, props) => {
-    getNewsAction(dispatch, props.match.params.id);
-    return ({
-        editNewsClick: (id, title, description) => {
-            if (title !== '' && description !== '') {
-                editNewsAction(dispatch, id, title, description);
-            }
-        }
-    });
+  getNewsAction(dispatch, props.match.params.id);
+  return ({
+    editNewsClick: (id, title, description) => {
+      if (title !== '' && description !== '') {
+        editNewsAction(dispatch, id, title, description);
+      }
+    }
+  });
 };
 
 const mapStateToProps = (state) => {
-    return {
-        news: state.news
-    };
+  return {
+    news: state.news
+  };
 };
 
 EditNewsContainer.propTypes = {
-    props: PropTypes.object.isRequired
+  props: PropTypes.object.isRequired
 };
 
 EditNewsContainer = connect(mapStateToProps, mapDispatchToProps)(EditNewsContainer);

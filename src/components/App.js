@@ -12,23 +12,23 @@ import HeaderContainer from '../conteiners/HeaderContainer';
 import NotFound from './NotFound';
 
 const App = () => (
-    <Router>
-        <div>
-            <div style={{height: 936}}>
-                <HeaderContainer />
-                <Switch>
-                    <Route exact path='/' component={NewsListContainer} />
-                    <Route path='/add' component={AddNewsContainer} />
-                    <Route path='/edit/:id' component={EditNewsContainer} />
-                    <Route path='/signup' component={SignUpContainer} />
-                    <Route path='/signin' component={SignInContainer} />
-                    <Route path='/news/:id' component={NewsDetailContainer}/>
-                    <Route path='/:id' component={NotFound}/>
-                </Switch>
-            </div>
-            <Footer />
-        </div>
-    </Router>
+  <Router>
+    <div>
+      <div style={{height: 936}}>
+        <HeaderContainer />
+        <Switch>
+          <Route exact path='/' component={NewsListContainer} />
+          <Route path='/add' component={AddNewsContainer} />
+          <Route path='/edit/:id' component={EditNewsContainer} />
+          <Route path='/signup' component={SignUpContainer} />
+          <Route path='/signin' component={SignInContainer} />
+          <Route path='/news/:id' component={NewsDetailContainer}/>
+          <Route path='/:id' component={NotFound}/>
+        </Switch>
+      </div>
+      <Footer />
+    </div>
+  </Router>
 );
 
 export default App;

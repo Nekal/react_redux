@@ -27,8 +27,9 @@
     },
 
     "rules": {
-        "accessor-pairs": "error",
+//        "accessor-pairs": "error",
         "arrow-spacing": ["error", { "before": true, "after": true }],
+        "prefer-arrow-callback": "error",
         "block-spacing": ["error", "always"],
         "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
         "camelcase": ["error", { "properties": "never" }],
@@ -49,7 +50,7 @@
         "func-call-spacing": ["error", "never"],
         "generator-star-spacing": ["error", { "before": true, "after": true }],
         "handle-callback-err": ["error", "^(err|error)$" ],
-        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "indent": ["error", 2, { "SwitchCase": 1 }],
         "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
         "keyword-spacing": ["error", { "before": true, "after": true }],
         "new-cap": ["error", { "newIsCap": true, "capIsNew": false }],
@@ -152,7 +153,7 @@
         "prefer-promise-reject-errors": "error",
         "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
         "rest-spread-spacing": ["error", "never"],
-        "semi": ["error", "always", { "omitLastInOneLineBlock": true}],
+        "semi": ["error"],
 //        "semi-spacing": ["error", { "before": false, "after": true }],
         "space-before-blocks": ["error", "always"],
         "space-before-function-paren": ["error", "always"],

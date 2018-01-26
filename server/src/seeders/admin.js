@@ -12,11 +12,11 @@
 let user = require('../controllers/user');
 
 module.exports = () => {
-    user.create('admin', 'admin@test.com', 'admin', 'admin')
-        .then(function (newUser) {
+  user.create('admin', 'admin@test.com', 'admin', 'admin')
+    .then((newUser) => {
 
-        })
-        .catch(function (error) {
-            // console.log("Error in admin");
-        });
+    })
+    .catch((error) => {
+      // console.log("Error in admin");
+    });
 };

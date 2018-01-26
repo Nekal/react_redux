@@ -6,24 +6,24 @@ import UserService from '../services/UserService';
 import PropTypes from 'prop-types';
 
 let NewsDetailContainer = (props) => {
-    let news = props.news;
-    return (
-        <NewsDetailComponent news={news} userData={UserService.getUserData()}/>
-    );
+  let news = props.news;
+  return (
+    <NewsDetailComponent news={news} userData={UserService.getUserData()}/>
+  );
 };
 
 const mapDispatchToProps = (dispatch, props) => {
-    getNewsAction(dispatch, props.match.params.id);
+  getNewsAction(dispatch, props.match.params.id);
 };
 
 const mapStateToProps = (state) => {
-    return {
-        news: state.news
-    };
+  return {
+    news: state.news
+  };
 };
 
 NewsDetailContainer.propTypes = {
-    props: PropTypes.object.isRequired
+  props: PropTypes.object.isRequired
 };
 
 NewsDetailContainer = connect(mapStateToProps, mapDispatchToProps)(NewsDetailContainer);

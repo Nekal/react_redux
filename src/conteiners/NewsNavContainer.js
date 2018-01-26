@@ -4,9 +4,9 @@ import NewsNav from '../components/NewsNav';
 import UserService from '../services/UserService';
 
 let NewsNavContainer = () => {
-    return (
-        <NewsNav userData={UserService.getUserData()} />
-    );
+  return (
+    <NewsNav userData={UserService.getUserData()} />
+  );
 };
 
 NewsNavContainer = connect()(NewsNavContainer);

@@ -3,8 +3,8 @@ import news from './news';
 import users from './users';
 
 const AppReducer = combineReducers({
-    news,
-    users
+  news,
+  users
 });
 
 export default AppReducer;
