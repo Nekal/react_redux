@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -42,17 +41,19 @@ class NewsComponent extends React.Component {
               this.element = ref;
             }}>
               <div className={'container'}>
-                <div className='row'>
-                  <div className='col-lg-12'>
-                    <h1 className='mt-12'>{this.news.title}</h1 >
-                    <hr/>
-                    <p className='content'>{this.news.description}</p>
-                    <hr/>
-                    <ul className='list-inline list-unstyled' style={{ textAlign: 'right' }}>
-                      <li><Link to={`/news/${this.news.id}`}> read me</Link></li>
-                    </ul>
+                <a href={`/news/${this.news.id}`} style={{ textDecorationLine: 'none', color: 'black' }} >
+                  <div className='row'>
+                    <div className='col-lg-12'>
+                        <h1 className='mt-12'>{this.news.title}</h1 >
+                        <hr/>
+                        <p className='content'>{this.news.description}</p>
+                      <hr/>
+                      <ul className='list-inline list-unstyled' style={{ textAlign: 'right' }}>
+                        <li><Link to={`/news/${this.news.id}`}> read me</Link></li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>

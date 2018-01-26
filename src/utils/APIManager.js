@@ -11,12 +11,10 @@ export default {
   },
 
   post(url, params) {
-    return (
-      superagent
-        .post(url)
-        .send(params)
-        .set('Accept', 'application/json')
-    );
+    return superagent
+      .post(url)
+      .send(params)
+      .set('Accept', 'application/json');
   },
 
   put(url, params) {

@@ -1,64 +1,57 @@
-let express = require('express');
+const express = require('express');
+
 const router = express.Router();
 
-let news = require('../controllers/news');
+const news = require('../controllers/news');
 
 router.get('/news', (req, res) => {
   news.findById(req.query.id)
     .then((result) => {
-      sendResult(res, result);
+      res.send(result);
     })
     .catch((error) => {
-      sendError(res, error);
+      res.send(error);
     });
 });
 
 router.delete('/news', (req, res) => {
   news.destroy(req.query.id)
     .then((result) => {
-      sendResult(res, result);
+      res.send(result);
     })
     .catch((error) => {
-      sendError(res, error);
+      res.send(error);
     });
 });
 
 router.put('/news', (req, res) => {
   news.update(req.body.id, req.body.title, req.body.description)
     .then((result) => {
-      sendResult(res, result);
+      res.send(result);
     })
     .catch((error) => {
-      sendError(res, error);
+      res.send(error);
     });
 });
 
 router.get('/allnews', (req, res) => {
   news.findAll()
     .then((result) => {
-      sendResult(res, result);
+      res.send(result);
     })
     .catch((error) => {
-      sendError(res, error);
+      res.send(error);
     });
 });
 
 router.post('/add', (req, res) => {
   news.create(req.body.title, req.body.description)
     .then((newNews) => {
-      sendResult(res, newNews);
+      res.send(newNews);
     })
     .catch((error) => {
-      sendError(res, error);
+      res.send(error);
     });
 });
-
-sendResult = (res, result) => {
-  res.send(result);
-};
-
-sendError = (res, result) => {
-  res.send(result);
-};
 
 module.exports = router;

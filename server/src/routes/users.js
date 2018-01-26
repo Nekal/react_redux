@@ -1,34 +1,27 @@
-let express = require('express');
+const express = require('express');
+
 const router = express.Router();
 
-let user = require('../controllers/user');
+const user = require('../controllers/user');
 
 router.post('/signup', (req, res) => {
   user.create(req.body.username, req.body.email, req.body.password, req.body.role)
     .then((newUser) => {
-      sendResult(res, newUser);
+      res.send(newUser);
     })
     .catch((error) => {
-      sendError(res, error);
+      res.send(error);
     });
 });
 
 router.get('/signin', (req, res) => {
   user.findUser(req.query.username, req.query.password)
     .then((result) => {
-      sendResult(res, result);
+      res.send(result);
     })
     .catch((error) => {
-      sendError(res, error);
+      res.send(error);
     });
 });
-
-const sendResult = (res, result) => {
-  res.send(result);
-};
-
-const sendError = (res, result) => {
-  res.send(result);
-};
 
 module.exports = router;

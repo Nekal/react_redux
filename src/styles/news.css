@@ -4,6 +4,11 @@
 
 }
 
+.newsLink {
+    text-decoration: none;
+    background: black;
+}
+
 .animated {
     opacity: 1;
     transition: 3s;

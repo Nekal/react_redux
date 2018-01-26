@@ -8,7 +8,6 @@
   "extends": ["react", "airbnb-base"],
   "rules" : {
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error",
     "no-console":0,
     "comma-dangle": ["error", "never"],
     "no-unused-expressions": 0,
@@ -16,7 +15,6 @@
   },
   "env": {
     "node": true,
-    "mocha": true,
     "browser": true
   }
 }

@@ -16,12 +16,12 @@ const AddNewsContainer = ({ addNewsClick, checkUserData }) => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  addNewsClick: (title, description) => {
+  addNewsClick(title, description) {
     if (title !== '' && description !== '') {
       addNewsAction(dispatch, title, description);
     }
   },
-  checkUserData: () => {
+  checkUserData() {
     const userData = UserService.getUserData();
     return (userData !== null && userData.role === 'admin');
   }

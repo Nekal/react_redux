@@ -18,7 +18,7 @@ const NewsDetailComponent = ({ news, userData }) => (
                   <hr />
                   <p>{news.activeNews.description}</p>
 
-                  {userData !== null && userData.role === 'admin' ? (
+                  {userData && userData.role === 'admin' ? (
 
                     <ul className='list-inline list-unstyled'>
                       <hr />

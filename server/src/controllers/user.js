@@ -1,18 +1,21 @@
-User = require('../models/').user;
+const User = require('../models/').user;
 
 module.exports = {
-  findUser (username, password) {
+  findUser(username, password) {
     return (
       User.findOne({
         where: {
-          username: username,
-          password: password
-        }})
+          username,
+          password
+        }
+      })
     );
   },
-  create (username, email, password, role) {
+  create(username, email, password, role) {
     return (
-      User.create({username, email, password, role})
+      User.create({
+        username, email, password, role
+      })
     );
   }
 };

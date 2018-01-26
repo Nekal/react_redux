@@ -1,40 +1,41 @@
-News = require('../models/').news;
+const News = require('../models/').news;
+// import News from '../models/news';
 
 module.exports = {
-  findAll () {
+  findAll() {
     return (
       News.findAll({
         order: [['id', 'DESC']]
       })
     );
   },
-  findById (id) {
+  findById(id) {
     return (
       News.findById(id)
     );
   },
-  create (title, description) {
+  create(title, description) {
     return (
-      News.create({title, description})
+      News.create({ title, description })
     );
   },
-  destroy (id) {
+  destroy(id) {
     return (
       News.destroy({
         where: {
-          id: id
+          id
         }
       })
     );
   },
 
-  update (id, title, description) {
+  update(id, title, description) {
     return (
-      News.update({title, description}, {
+      News.update({ title, description }, {
         title,
         description,
         where: {
-          id: id
+          id
         }
       })
     );
