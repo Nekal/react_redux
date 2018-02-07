@@ -9,7 +9,7 @@ import DeleteNewsContainer from '../conteiners/DeleteNewsContainer';
 const NewsDetailComponent = ({ news, userData }) => (
     <div className='container'>
       <div className='row detail'>
-        <div className='col-md-12'>
+        <div className='col-md-10'>
           <div className='thumbnail'>
             <div className='container'>
               <div className='row'>

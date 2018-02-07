@@ -8,7 +8,7 @@ const SignUpContainer = ({ signUpClick }) => (
   <SignUpComponent signUpClick={signUpClick}/>
 );
 
-const SignUp = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   signUpClick: (username, email, password, role) => {
     dispatch(signUpAction({
       username, email, password, role
@@ -20,4 +20,4 @@ SignUpContainer.propTypes = {
   signUpClick: PropTypes.func.isRequired
 };
 
-export default connect(null, SignUp)(SignUpContainer);
+export default connect(null, mapDispatchToProps)(SignUpContainer);

@@ -4,14 +4,18 @@ import { connect } from 'react-redux';
 
 import DeleteNewsComponent from '../components/DeleteNewsComponent';
 import { deleteNewsAction } from '../actions';
+import UserService from '../services/UserService';
 
 const DeleteNewsContainer = ({ id, deleteNewsClick }) => (
-    <DeleteNewsComponent id={id} deleteNewsClick={deleteNewsClick}/>
+    <DeleteNewsComponent id={id}
+                         deleteNewsClick={deleteNewsClick}
+                         userData={UserService.getUserData()}
+    />
 );
 
-const DeleteNews = dispatch => ({
-  deleteNewsClick: (id) => {
-    deleteNewsAction(dispatch, id);
+const mapDispatchToProps = (dispatch, props) => ({
+  deleteNewsClick: (id, userId) => {
+    deleteNewsAction(dispatch, props.history, id, userId);
   }
 });
 
@@ -20,4 +24,4 @@ DeleteNewsContainer.propTypes = {
   deleteNewsClick: PropTypes.func.isRequired
 };
 
-export default connect(null, DeleteNews)(DeleteNewsContainer);
+export default connect(null, mapDispatchToProps)(DeleteNewsContainer);

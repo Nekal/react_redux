@@ -8,6 +8,22 @@ class UserService {
     return instance;
   }
 
+  getToken = params => (
+    APIManager
+      .get('api/gettoken', params)
+      .then((response) => {
+        if (response.body.errors === undefined) {
+          return new Promise((resolve) => {
+            resolve(response.body);
+          });
+        }
+        return new Promise((reject) => { reject(response.body); });
+      })
+      .catch((err) => {
+        console.log(`ERROR: ${JSON.stringify(err)}`);
+      })
+  ) ;
+
   signUp = (params) => {
     APIManager
       .post('api/signup', params)
@@ -21,7 +37,7 @@ class UserService {
       .catch((err) => {
         console.log(`ERROR: ${JSON.stringify(err)}`);
       });
-  }
+  };
 
   signIn = (params) => {
     APIManager
@@ -37,7 +53,7 @@ class UserService {
       .catch((err) => {
         console.log(`ERROR: ${JSON.stringify(err)}`);
       });
-  }
+  };
 
   static getUserData() {
     const user = JSON.parse(window.localStorage.getItem('USER_DATA'));

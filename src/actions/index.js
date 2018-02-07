@@ -4,17 +4,39 @@ import UserService from '../services/UserService';
 const newsService = new NewsService();
 const userService = new UserService();
 
-export const addNewsAction = (dispatch, title, description) => {
-  newsService.addNews({
-    title: description,
-    description
-  }).then((newsItem) => {
-    dispatch({
-      type: 'ADD_NEWS',
-      newsItem
+export const loginUserAction = (dispatch, history, user) => {
+  userService.getToken({
+    username: user.username,
+    password: user.password
+  })
+    .then((token) => {
+      window.localStorage.setItem('token', token);
+      dispatch({
+        type: 'LOGIN_USER',
+        token
+      });
+      userService.signIn({
+        username: user.username,
+        password: user.password
+      });
     });
-    // window.location.href = "/"
-  });
+};
+
+export const addNewsAction = (dispatch, history, title, description, userId) => {
+  const token = window.localStorage.getItem('token');
+  newsService.addNews({
+    title,
+    description,
+    userId,
+    token
+  })
+    .then((newsItem) => {
+      dispatch({
+        type: 'ADD_NEWS',
+        newsItem
+      });
+      history.push('/');
+    });
 };
 
 export const getAllNewsAction = (dispatch) => {
@@ -30,16 +52,6 @@ export const getAllNewsAction = (dispatch) => {
 };
 
 export const getNewsAction = (dispatch, id) => {
-  // console.log("news: " + JSON.stringify(news))
-  // const newsItem = news.find(news => news.id === id);
-  //
-  // if (newsItem) {
-  //     console.log("if: " + JSON.stringify(newsItem))
-  //     dispatch({
-  //         type: 'SHOW_NEWS',
-  //         newsItem
-  //     });
-  // } else {
   newsService.getNews({ id })
     .then((newsItem) => {
       dispatch({
@@ -47,24 +59,27 @@ export const getNewsAction = (dispatch, id) => {
         newsItem
       });
     });
-  // }
 };
 
-export const deleteNewsAction = (dispatch, id) => {
-  newsService.deleteNews({ id })
+export const deleteNewsAction = (dispatch, history, id, userId) => {
+  const token = window.localStorage.getItem('token');
+  newsService.deleteNews({ token, id, userId })
     .then(() => {
-      window.location.href = '/';
+      history.push('/');
     });
 };
 
-export const editNewsAction = (dispatch, id, title, description) => {
+export const editNewsAction = (dispatch, history, id, title, description, userId) => {
+  const token = window.localStorage.getItem('token');
   newsService.editNews({
     id,
     title,
-    description
+    description,
+    userId,
+    token
   })
     .then(() => {
-      window.location.href = '/';
+      history.push('/');
     });
 };
 
@@ -75,22 +90,10 @@ export const signUpAction = (user) => {
     password: user.password,
     role: user.role
   });
-  return ({
-    type: 'SIGN_UP',
-    username: user.username,
-    email: user.email,
-    password: user.password,
-    role: user.type
-  });
 };
 
 export const signInAction = (user) => {
   userService.signIn({
-    username: user.username,
-    password: user.password
-  });
-  return ({
-    type: 'SIGN_IN',
     username: user.username,
     password: user.password
   });

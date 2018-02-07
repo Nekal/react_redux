@@ -12,26 +12,25 @@ class NewsService {
     APIManager
       .post('/api/add', params)
       .then((response) => {
-        if (response.body.errors === undefined) {
-          return new Promise((resolve) => {
-            resolve(response.body);
-          });
+        if (response.body.errors) {
+          return new Promise(resolve => resolve(response.body));
         }
-        return new Promise((reject) => { reject(response.body); });
+        return new Promise(reject => reject(response.body));
       })
       .catch((err) => {
-        console.log(`ERROR: ${JSON.stringify(err)}`);
+        if (err.status === Number(401)) {
+          window.localStorage.removeItem('token');
+          window.localStorage.removeItem('USER_DATA');
+        }
       })
   );
 
-  getAllNews =() => (
+  getAllNews = () => (
     APIManager
       .get('/api/allnews')
       .then((response) => {
-        if (response.body.errors === undefined) {
-          return new Promise((resolve) => {
-            resolve(response.body);
-          });
+        if (response.body.errors) {
+          return new Promise(resolve => resolve(response.body));
         }
         return new Promise((reject) => { reject(response.body); });
       })
@@ -44,12 +43,10 @@ class NewsService {
     APIManager
       .get('/api/news', params)
       .then((response) => {
-        if (response.body.errors === undefined) {
-          return new Promise((resolve) => {
-            resolve(response.body);
-          });
+        if (response.body.errors) {
+          return new Promise(resolve => resolve(response.body));
         }
-        return new Promise((reject) => { reject(response.body); });
+        return new Promise(reject => reject(response.body));
       })
       .catch((err) => {
         console.log(`ERROR: ${JSON.stringify(err)}`);
@@ -60,15 +57,16 @@ class NewsService {
     APIManager
       .delete('/api/news', params)
       .then((response) => {
-        if (response.body.errors === undefined) {
-          return new Promise((resolve) => {
-            resolve(response.body);
-          });
+        if (response.body.errors) {
+          return new Promise(resolve => resolve(response.body));
         }
         return new Promise((reject) => { reject(response.body); });
       })
       .catch((err) => {
-        console.log(`ERROR: ${JSON.stringify(err)}`);
+        if (err.status === Number(401)) {
+          window.localStorage.removeItem('token');
+          window.localStorage.removeItem('USER_DATA');
+        }
       })
   );
 
@@ -76,15 +74,16 @@ class NewsService {
     APIManager
       .put('/api/news', params)
       .then((response) => {
-        if (response.body.errors === undefined) {
-          return new Promise((resolve) => {
-            resolve(response.body);
-          });
+        if (response.body.errors) {
+          return new Promise(resolve => resolve(response.body));
         }
-        return new Promise((reject) => { reject(response.body); });
+        return new Promise(reject => reject(response.body));
       })
       .catch((err) => {
-        console.log(`ERROR: ${JSON.stringify(err)}`);
+        if (err.status === Number(401)) {
+          window.localStorage.removeItem('token');
+          window.localStorage.removeItem('USER_DATA');
+        }
       })
   );
 }

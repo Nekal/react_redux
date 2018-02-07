@@ -9,11 +9,12 @@ import UserService from '../services/UserService';
 
 const EditNewsContainer = (props) => {
   const { news } = props;
-
   return (
     <div>
       {props.checkUserData() ? (
-        <EditNewsComponent news={news} editNewsClick={props.editNewsClick}/>
+        <EditNewsComponent news={news}
+                           editNewsClick={props.editNewsClick}
+                           userData={UserService.getUserData()}/>
       ) : (<NotFound/>)}
     </div>
   );
@@ -22,9 +23,9 @@ const EditNewsContainer = (props) => {
 const mapDispatchToProps = (dispatch, props) => {
   getNewsAction(dispatch, props.match.params.id);
   return ({
-    editNewsClick: (id, title, description) => {
+    editNewsClick: (id, title, description, userId) => {
       if (title !== '' && description !== '') {
-        editNewsAction(dispatch, id, title, description);
+        editNewsAction(dispatch, props.history, id, title, description, userId);
       }
     },
     checkUserData: () => {

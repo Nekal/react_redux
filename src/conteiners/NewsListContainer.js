@@ -12,7 +12,7 @@ const NewsListContainer = (props) => {
   );
 };
 
-const showNews = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   getAllNewsAction(dispatch);
 };
 
@@ -25,4 +25,4 @@ NewsListContainer.propTypes = {
   news: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, showNews)(NewsListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(NewsListContainer);

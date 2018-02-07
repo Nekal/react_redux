@@ -10,15 +10,17 @@ import UserService from '../services/UserService';
 const AddNewsContainer = ({ addNewsClick, checkUserData }) => (
     <div>
       {checkUserData() ? (
-        <AddNewsComponent addNewsClick={addNewsClick}/>
+        <AddNewsComponent addNewsClick={addNewsClick}
+                          userData={UserService.getUserData()}
+        />
       ) : (<NotFound/>)}
     </div>
 );
 
-const mapDispatchToProps = dispatch => ({
-  addNewsClick(title, description) {
+const mapDispatchToProps = (dispatch, props) => ({
+  addNewsClick(title, description, userId) {
     if (title !== '' && description !== '') {
-      addNewsAction(dispatch, title, description);
+      addNewsAction(dispatch, props.history, title, description, userId);
     }
   },
   checkUserData() {

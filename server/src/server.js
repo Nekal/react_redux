@@ -8,15 +8,15 @@ const path = require('path');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('*/api', require('./routes/users'));
-app.use('*/api', require('./routes/news'));
+app.use('/api', require('./routes/users'));
+app.use('/api', require('./routes/news'));
 
-app.use('/app/:id', express.static(path.resolve(__dirname, '../../build/')));
-app.use(express.static(path.resolve(__dirname, '../../build/')));
+app.use(express.static(path.resolve(__dirname, '../../../angular-news/dist/')));
 app.get('/*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../../build/index.html'));
+  res.sendFile(path.resolve(__dirname, '../../../angular-news/dist/index.html'));
 });
 
+app.set('port', 8000);
 app.set('port', 8000);
 
 const models = require('./models');

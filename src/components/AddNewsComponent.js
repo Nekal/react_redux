@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import '../styles/addForm.css';
 import '../styles/bootstrap.css';
 
-const AddNewsComponent = ({ addNewsClick }) => {
+const AddNewsComponent = ({ addNewsClick, userData }) => {
   let title;
   let description;
   return (
@@ -22,23 +21,22 @@ const AddNewsComponent = ({ addNewsClick }) => {
         <div className='form-group'>
           <label htmlFor='listItemDescription'>Description</label>
           <textarea className='form-control' placeholder='Input description' rows='10'
-                    ref={(node) => {
-                      description = node;
-                    }} />
+            ref={(node) => {
+              description = node;
+            }} />
         </div>
-        <Link to={'/'}>
           <button className='btn btn-primary btn-large'
-                  onClick={() => { addNewsClick(title.value, description.value); }}>
+            onClick={() => { addNewsClick(title.value, description.value, userData.id); }}>
             Add
           </button>
-        </Link>
       </div>
     </div>
   );
 };
 
 AddNewsComponent.propTypes = {
-  addNewsClick: PropTypes.func.isRequired
+  addNewsClick: PropTypes.func.isRequired,
+  userData: PropTypes.object.isRequired
 };
 
 export default AddNewsComponent;

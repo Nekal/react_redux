@@ -10,7 +10,11 @@ module.exports = {
       type: Sequelize.STRING
     },
     description: {
-      type: Sequelize.STRING
+      type: Sequelize.TEXT
+    },
+    userId: {
+      type: Sequelize.INTEGER,
+      references: { model: 'users', key: 'id' }
     },
     createdAt: {
       allowNull: false,
@@ -23,7 +27,12 @@ module.exports = {
   }, {
     charset: 'utf8',
     collate: 'utf8_unicode_ci'
-  }),
-
+  })
+    .catch((err) => {
+      console.log(err);
+    }),
   down: queryInterface => queryInterface.dropTable('news')
+    .catch((err) => {
+      console.log(err);
+    })
 };

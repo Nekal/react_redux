@@ -1,5 +1,7 @@
 const User = require('../models/').user;
 
+const jwt = require('jsonwebtoken');
+
 module.exports = {
   findUser(username, password) {
     return (
@@ -17,5 +19,16 @@ module.exports = {
         username, email, password, role
       })
     );
+  },
+
+  checkUser(id, role, userId) {
+    if (role === 'admin' && id === Number(userId)) {
+      return (
+        User.findOne({
+          where: { id, role }
+        })
+      );
+    }
+    return Promise.reject(new Error('...'));
   }
 };

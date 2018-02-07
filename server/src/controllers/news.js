@@ -14,9 +14,9 @@ module.exports = {
       News.findById(id)
     );
   },
-  create(title, description) {
+  create(title, description, userId) {
     return (
-      News.create({ title, description })
+      News.create({ title, description, userId })
     );
   },
   destroy(id) {
@@ -28,7 +28,6 @@ module.exports = {
       })
     );
   },
-
   update(id, title, description) {
     return (
       News.update({ title, description }, {

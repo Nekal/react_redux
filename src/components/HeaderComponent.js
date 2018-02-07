@@ -9,7 +9,6 @@ const HeaderComponent = ({ userData, logoutClick }) => (
         <div className='nav navbar-left'>
           <li><a href='/'>Instructions</a></li>
         </div>
-
         {userData === null ? (
           <div className='nav navbar-right'>
             <li><a href='/signin'>Sign in</a></li>
